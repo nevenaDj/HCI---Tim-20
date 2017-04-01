@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace Projekat
 {
@@ -23,6 +24,20 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void OpenBook_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.DefaultExt = ".txt";
+            openFileDialog.Filter = "Text documents (.txt)|*.txt";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Book.Visibility = Visibility.Visible;
+                string filename = openFileDialog.FileName;
+                ParagraphT.Inlines.Add(System.IO.File.ReadAllText(filename));
+            }
         }
     }
 }
