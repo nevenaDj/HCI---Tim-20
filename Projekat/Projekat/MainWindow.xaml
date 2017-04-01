@@ -11,10 +11,22 @@
     mc:Ignorable="d">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch" />
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
             <MenuItem
                 Click="OpenBook_Click"
                 Header="_Open Book"
                 TextBlock.FontSize="16" />
+            <MenuItem
+                Name="CloseBook"
+                HorizontalAlignment="Right"
+                Click="CloseBook_Click"
+                Header="_Close Book"
+                TextBlock.FontSize="16"
+                Visibility="Hidden" />
         </Menu>
         <Grid
             Name="Book"

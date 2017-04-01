@@ -36,8 +36,17 @@ namespace Projekat
             {
                 Book.Visibility = Visibility.Visible;
                 string filename = openFileDialog.FileName;
+                ParagraphT.Inlines.Clear();
                 ParagraphT.Inlines.Add(System.IO.File.ReadAllText(filename));
+                CloseBook.Visibility = Visibility.Visible;
+                
             }
+        }
+
+        private void CloseBook_Click(object sender, RoutedEventArgs e)
+        {
+            Book.Visibility = Visibility.Hidden;
+            CloseBook.Visibility = Visibility.Hidden;
         }
     }
 }
