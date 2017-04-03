@@ -6,11 +6,12 @@
     xmlns:local="clr-namespace:Projekat"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Book Reader"
-    Width="1000"
-    Height="600"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
     mc:Ignorable="d">
+
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
+        <Menu Name="MyMenu" DockPanel.Dock="Top">
             <Menu.ItemsPanel>
                 <ItemsPanelTemplate>
                     <DockPanel HorizontalAlignment="Stretch" />
@@ -34,19 +35,15 @@
             VerticalAlignment="Stretch"
             DockPanel.Dock="Bottom"
             Visibility="Hidden">
-            <FlowDocumentReader
-                Name="FlowDocReader"
-                IsFindEnabled="False"
-                TextBlock.Foreground="DarkSlateGray"
-                ViewingMode="Scroll">
-                <FlowDocument ColumnWidth="1000">
+            <FlowDocumentPageViewer Name="FlowDocReader" TextBlock.Foreground="DarkSlateGray">
+                <FlowDocument ColumnWidth="1000" PageWidth="800">
                     <Paragraph
                         Name="ParagraphT"
                         Margin="100,50,50,50"
                         TextBlock.FontStretch="UltraExpanded"
                         TextBlock.TextAlignment="Justify" />
                 </FlowDocument>
-            </FlowDocumentReader>
+            </FlowDocumentPageViewer>
         </Grid>
     </DockPanel>
 </Window>

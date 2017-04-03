@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Projekat
 {
@@ -26,20 +28,35 @@ namespace Projekat
             InitializeComponent();
         }
 
+        private static RoutedCommand hideMenu = new RoutedCommand();
         private void OpenBook_Click(object sender, RoutedEventArgs e)
         {
+            //otvori dijalog za izbor knjige
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.DefaultExt = ".txt";
             openFileDialog.Filter = "Text documents (.txt)|*.txt";
 
             if (openFileDialog.ShowDialog() == true)
             {
+                //prikazi knjigu
                 Book.Visibility = Visibility.Visible;
                 string filename = openFileDialog.FileName;
                 ParagraphT.Inlines.Clear();
-                ParagraphT.Inlines.Add(System.IO.File.ReadAllText(filename));
-                CloseBook.Visibility = Visibility.Visible;
+                string text = File.ReadAllText(filename);
+                ParagraphT.Inlines.Add(text);
                 
+
+                //komanda za sakrivanje menija
+                hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
+                CommandBinding cb = new CommandBinding(hideMenu);
+                cb.Executed += new ExecutedRoutedEventHandler(HideHandler);
+                this.CommandBindings.Add(cb);
+
+                CloseBook.Visibility = Visibility.Visible;
+                MyMenu.Visibility = Visibility.Hidden;
+
+                //ovo ne radi 
+                FlowDocReader.GoToPage(50);
             }
         }
 
@@ -47,6 +64,21 @@ namespace Projekat
         {
             Book.Visibility = Visibility.Hidden;
             CloseBook.Visibility = Visibility.Hidden;
+            MyMenu.Visibility = Visibility.Visible;
+        }
+
+        
+        private void HideHandler(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (MyMenu.Visibility == Visibility.Visible)
+            {
+                MyMenu.Visibility = Visibility.Hidden;
+                FlowDocReader.FirstPage();  //ovde radi xD
+            }
+            else if (MyMenu.Visibility == Visibility.Hidden)
+            {
+                MyMenu.Visibility = Visibility.Visible;
+            }
         }
     }
 }
