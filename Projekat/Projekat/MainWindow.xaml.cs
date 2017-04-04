@@ -27,6 +27,21 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
+            FileStream f = new FileStream("../../Save/save.txt", FileMode.Open);
+
+            string fileContents;
+            using (StreamReader reader = new StreamReader(f))
+            {
+                fileContents = reader.ReadToEnd();
+            }
+
+            if (fileContents=="")
+                MessageBox.Show("empty");
+            else
+            {
+                MessageBox.Show(fileContents);
+            }
+
         }
 
         private static RoutedCommand hideMenu = new RoutedCommand();
@@ -78,7 +93,8 @@ namespace Projekat
 
         void Window_Closing(object sender, CancelEventArgs e)
         {
-            MessageBox.Show("" + FlowDocReader.MasterPageNumber);
+            if (Book.Visibility!=Visibility.Hidden)
+                MessageBox.Show("" + FlowDocReader.MasterPageNumber);
 
             // If data is dirty, notify user and ask for a response
 
