@@ -35,13 +35,19 @@
             VerticalAlignment="Stretch"
             DockPanel.Dock="Bottom"
             Visibility="Hidden">
-            <FlowDocumentPageViewer Name="FlowDocReader" TextBlock.Foreground="DarkSlateGray">
-                <FlowDocument ColumnWidth="1000" PageWidth="800">
-                    <Paragraph
-                        Name="ParagraphT"
-                        Margin="100,50,50,50"
-                        TextBlock.FontStretch="UltraExpanded"
-                        TextBlock.TextAlignment="Justify" />
+            <FlowDocumentPageViewer
+                Name="FlowDocReader"
+                Padding="20,0,20,0"
+                TextBlock.Foreground="DarkSlateGray"
+                
+                >
+                <FlowDocument
+                    Background="LightYellow"
+                    ColumnWidth="1000"
+                    
+                    PagePadding="150,50,150,50"
+                    TextAlignment="Justify">
+                    <Paragraph Name="ParagraphT" TextBlock.FontStretch="UltraExpanded" />
                 </FlowDocument>
             </FlowDocumentPageViewer>
         </Grid>

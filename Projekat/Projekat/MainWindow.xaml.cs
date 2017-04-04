@@ -43,9 +43,15 @@ namespace Projekat
                 string filename = openFileDialog.FileName;
                 ParagraphT.Inlines.Clear();
                 string text = File.ReadAllText(filename);
+
+                RegexOptions options = RegexOptions.None;
+                Regex regex = new Regex("[\r\n]{3,}", options);
+                text = regex.Replace(text, "-*-");
+                text = text.Replace("\r\n", " ");
+                text = text.Replace("-*-", "\r\n\r\n");
+
                 ParagraphT.Inlines.Add(text);
                 
-
                 //komanda za sakrivanje menija
                 hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
                 CommandBinding cb = new CommandBinding(hideMenu);
@@ -54,6 +60,7 @@ namespace Projekat
 
                 CloseBook.Visibility = Visibility.Visible;
                 MyMenu.Visibility = Visibility.Hidden;
+                
 
                 //ovo ne radi 
                 FlowDocReader.GoToPage(50);
