@@ -41,7 +41,7 @@ namespace Projekat
                 //prikazi knjigu
                 Book.Visibility = Visibility.Visible;
                 string filename = openFileDialog.FileName;
-                ParagraphT.Inlines.Clear();
+                
                 string text = File.ReadAllText(filename);
 
                 RegexOptions options = RegexOptions.None;
@@ -50,29 +50,25 @@ namespace Projekat
                 text = text.Replace("\r\n", " ");
                 text = text.Replace("-*-", "\r\n\r\n");
 
-                ParagraphT.Inlines.Add(text);
-                FlowDocument document = new FlowDocument(ParagraphT);
+                Paragraph paragrah = new Paragraph();
+                paragrah.Inlines.Add(text);
+                FlowDocument document = new FlowDocument(paragrah);
                 document.Background = Brushes.LightYellow;
                 document.ColumnWidth = 1000;
                 document.PagePadding = new Thickness(150,50,50,50);
                 document.TextAlignment = TextAlignment.Justify;
                 document.FontStretch = FontStretches.UltraExpanded;
                 FlowDocReader.Document = document;
-                
-            
 
-
-                   //komanda za sakrivanje menija
-                   hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
+                //komanda za sakrivanje menija
+                hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
                 CommandBinding cb = new CommandBinding(hideMenu);
                 cb.Executed += new ExecutedRoutedEventHandler(HideHandler);
                 this.CommandBindings.Add(cb);
 
                 CloseBook.Visibility = Visibility.Visible;
                 MyMenu.Visibility = Visibility.Hidden;
-
               
-                //ovo ne radi 
                 this.FlowDocReader.GoToPage(1);
             }
             
@@ -92,7 +88,6 @@ namespace Projekat
             if (MyMenu.Visibility == Visibility.Visible)
             {
                 MyMenu.Visibility = Visibility.Hidden;
-                FlowDocReader.FirstPage();  //ovde radi xD
             }
             else if (MyMenu.Visibility == Visibility.Hidden)
             {

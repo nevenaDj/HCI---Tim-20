@@ -38,18 +38,7 @@
             <FlowDocumentPageViewer
                 Name="FlowDocReader"
                 Padding="20,0,20,0"
-                TextBlock.Foreground="DarkSlateGray"
-                
-                >
-                <FlowDocument
-                    Background="LightYellow"
-                    ColumnWidth="1000"
-                    
-                    PagePadding="150,50,150,50"
-                    TextAlignment="Justify">
-                    <Paragraph Name="ParagraphT" TextBlock.FontStretch="UltraExpanded" />
-                </FlowDocument>
-            </FlowDocumentPageViewer>
+                TextBlock.Foreground="DarkSlateGray" />
         </Grid>
     </DockPanel>
 </Window>
