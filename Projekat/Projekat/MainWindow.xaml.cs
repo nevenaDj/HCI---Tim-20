@@ -24,11 +24,12 @@ namespace Projekat
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
-            FileStream f = new FileStream("../../Save/save.txt", FileMode.Open);
 
+            FileStream f = new FileStream("../../Save/save.txt", FileMode.Open);
             string fileContents;
             using (StreamReader reader = new StreamReader(f))
             {
@@ -41,10 +42,12 @@ namespace Projekat
             {
                 MessageBox.Show(fileContents);
             }
+            f.Close();
 
         }
 
         private static RoutedCommand hideMenu = new RoutedCommand();
+        string filename ="";
         private void OpenBook_Click(object sender, RoutedEventArgs e)
         {
             //otvori dijalog za izbor knjige
@@ -56,7 +59,7 @@ namespace Projekat
             {
                 //prikazi knjigu
                 Book.Visibility = Visibility.Visible;
-                string filename = openFileDialog.FileName;
+                filename = openFileDialog.FileName;
                 
                 string text = File.ReadAllText(filename);
 
@@ -93,8 +96,31 @@ namespace Projekat
 
         void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (Book.Visibility!=Visibility.Hidden)
-                MessageBox.Show("" + FlowDocReader.MasterPageNumber);
+            if (Book.Visibility != Visibility.Hidden)
+            {
+                
+                StreamWriter f = new StreamWriter("../../Save/save.txt");
+                f.WriteLine(filename);
+                //page
+                f.WriteLine(FlowDocReader.MasterPageNumber);
+                //font size
+                f.WriteLine(FlowDocReader.FontSize);
+                //font family
+                f.WriteLine(FlowDocReader.FontFamily);
+                //font color
+                f.WriteLine(FlowDocReader.Foreground);
+                //background color
+                f.WriteLine(FlowDocReader.Background);
+                //padding
+                f.WriteLine(FlowDocReader.Padding);
+                //space between lines
+               // MessageBox.Show(""+FlowDocReader.Document);
+               // f.WriteLine(FlowDocReader.LineHeight);
+                //zoom
+                f.WriteLine(FlowDocReader.Zoom);
+                f.Close();
+            }
+                
 
             // If data is dirty, notify user and ask for a response
 
@@ -105,6 +131,7 @@ namespace Projekat
             Book.Visibility = Visibility.Hidden;
             CloseBook.Visibility = Visibility.Hidden;
             MyMenu.Visibility = Visibility.Visible;
+            //isbrisi save.txt
         }
 
         
