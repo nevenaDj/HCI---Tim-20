@@ -51,7 +51,12 @@ namespace Projekat
                 text = text.Replace("-*-", "\r\n\r\n");
 
                 ParagraphT.Inlines.Add(text);
-                
+                FlowDocument document = new FlowDocument(ParagraphT);
+
+                FlowDocReader.Document = document;
+
+
+
                 //komanda za sakrivanje menija
                 hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
                 CommandBinding cb = new CommandBinding(hideMenu);
@@ -60,12 +65,14 @@ namespace Projekat
 
                 CloseBook.Visibility = Visibility.Visible;
                 MyMenu.Visibility = Visibility.Hidden;
-                
 
+              
                 //ovo ne radi 
-                FlowDocReader.GoToPage(50);
+                this.FlowDocReader.GoToPage(1);
             }
+            
         }
+
 
         private void CloseBook_Click(object sender, RoutedEventArgs e)
         {
