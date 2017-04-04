@@ -52,13 +52,18 @@ namespace Projekat
 
                 ParagraphT.Inlines.Add(text);
                 FlowDocument document = new FlowDocument(ParagraphT);
-
+                document.Background = Brushes.LightYellow;
+                document.ColumnWidth = 1000;
+                document.PagePadding = new Thickness(150,50,50,50);
+                document.TextAlignment = TextAlignment.Justify;
+                document.FontStretch = FontStretches.UltraExpanded;
                 FlowDocReader.Document = document;
+                
+            
 
 
-
-                //komanda za sakrivanje menija
-                hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
+                   //komanda za sakrivanje menija
+                   hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
                 CommandBinding cb = new CommandBinding(hideMenu);
                 cb.Executed += new ExecutedRoutedEventHandler(HideHandler);
                 this.CommandBindings.Add(cb);
