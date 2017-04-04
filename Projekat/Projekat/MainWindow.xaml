@@ -2,13 +2,21 @@
     x:Class="Projekat.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cmd="clr-namespace:Projekat.Command"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Projekat"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Book Reader"
+    Width="800"
+    Height="500"
     WindowStartupLocation="CenterScreen"
-    WindowState="Maximized"
     mc:Ignorable="d">
+    <Window.CommandBindings>
+        <CommandBinding
+            CanExecute="FullScreen_CanExecute"
+            Command="cmd:FullScrenCommand.FullScreen"
+            Executed="FullScreen_Executed" />
+    </Window.CommandBindings>
 
     <DockPanel>
         <Menu Name="MyMenu" DockPanel.Dock="Top">

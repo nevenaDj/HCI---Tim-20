@@ -94,5 +94,26 @@ namespace Projekat
                 MyMenu.Visibility = Visibility.Visible;
             }
         }
+
+        private void FullScreen_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void FullScreen_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized && WindowStyle == WindowStyle.None)
+            {
+                WindowStyle = WindowStyle.SingleBorderWindow;
+                WindowState = WindowState.Normal;
+                ResizeMode = ResizeMode.CanResize;
+            }
+            else
+            {
+                WindowStyle = WindowStyle.None;
+                WindowState = WindowState.Maximized;
+                ResizeMode = ResizeMode.NoResize;
+            }
+        }
     }
 }
