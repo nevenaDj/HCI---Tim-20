@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.ComponentModel;
 
 namespace Projekat
 {
@@ -74,6 +75,14 @@ namespace Projekat
             
         }
 
+
+        void Window_Closing(object sender, CancelEventArgs e)
+        {
+            MessageBox.Show("" + FlowDocReader.MasterPageNumber);
+
+            // If data is dirty, notify user and ask for a response
+
+        }
 
         private void CloseBook_Click(object sender, RoutedEventArgs e)
         {

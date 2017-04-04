@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:Projekat"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Book Reader"
+    Closing="Window_Closing"
     Width="800"
     Height="500"
     WindowStartupLocation="CenterScreen"
