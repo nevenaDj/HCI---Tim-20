@@ -1,8 +1,8 @@
-C:\Users\Sabinomi\Downloads\Irish Fairy Tales.txt.txt
+C:\Users\Sabinomi\Downloads\Irish Fairy Tales.txt
 1
 12
 Segoe UI
 #FF2F4F4F
 #00FFFFFF
-0,0,0,0
+20,0,20,0
 100

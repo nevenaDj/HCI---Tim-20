@@ -41,9 +41,49 @@ namespace Projekat
             else
             {
                 MessageBox.Show(fileContents);
+                open(fileContents);
+
             }
             f.Close();
 
+        }
+
+        private void open(string fileContents)
+        {
+            string[] s = fileContents.Split('\n');
+            Book.Visibility = Visibility.Visible;
+            filename = s[0];
+            MessageBox.Show(filename); 
+               string text = File.ReadAllText(filename);
+             
+              //string text = "proba text";
+            
+              RegexOptions options = RegexOptions.None;
+              Regex regex = new Regex("[\r\n]{3,}", options);
+              text = regex.Replace(text, "-*-");
+              text = text.Replace("\r\n", " ");
+              text = text.Replace("-*-", "\r\n\r\n");
+            
+              Paragraph paragrah = new Paragraph();
+              paragrah.Inlines.Add(text);
+              FlowDocument document = new FlowDocument(paragrah);
+              document.Background = Brushes.LightYellow;
+              document.ColumnWidth = 1000;
+              document.PagePadding = new Thickness(150, 50, 50, 50);
+              document.TextAlignment = TextAlignment.Justify;
+              document.FontStretch = FontStretches.UltraExpanded;
+              FlowDocReader.Document = document;
+           
+              //komanda za sakrivanje menija
+              hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
+              CommandBinding cb = new CommandBinding(hideMenu);
+              cb.Executed += new ExecutedRoutedEventHandler(HideHandler);
+              this.CommandBindings.Add(cb);
+
+              CloseBook.Visibility = Visibility.Visible;
+              MyMenu.Visibility = Visibility.Hidden;
+
+              this.FlowDocReader.GoToPage(1);
         }
 
         private static RoutedCommand hideMenu = new RoutedCommand();
@@ -114,8 +154,9 @@ namespace Projekat
                 //padding
                 f.WriteLine(FlowDocReader.Padding);
                 //space between lines
-               // MessageBox.Show(""+FlowDocReader.Document);
-               // f.WriteLine(FlowDocReader.LineHeight);
+                MessageBox.Show(""+FlowDocument.LineHeightProperty.DefaultMetadata);
+               // f.WriteLine(.LineHeight);
+             
                 //zoom
                 f.WriteLine(FlowDocReader.Zoom);
                 f.Close();
@@ -132,6 +173,7 @@ namespace Projekat
             CloseBook.Visibility = Visibility.Hidden;
             MyMenu.Visibility = Visibility.Visible;
             //isbrisi save.txt
+            FileStream f = new FileStream("../../Save/save.txt", FileMode.Create);
         }
 
         
