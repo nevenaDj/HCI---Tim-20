@@ -88,6 +88,7 @@ namespace Projekat
             SolidColorBrush brush2 = new SolidColorBrush(color2);
             Doc.Background = brush2;  //ne radi
             page = Convert.ToInt32(s[1]);  //okej -> samo ne radi jump
+            Doc.LineHeight = Convert.ToInt32(s[8]);
 
             FlowDocReader.Document = Doc;
             FlowDocReader.Zoom = Convert.ToInt32(s[7]);   //radi
@@ -99,6 +100,7 @@ namespace Projekat
 
             CloseBook.Visibility = Visibility.Visible;
             MyMenu.Visibility = Visibility.Hidden;
+            Settings.Visibility = Visibility.Visible;
 
             MessageBox.Show("" + FlowDocReader.CanGoToPage(2));
         }
@@ -135,6 +137,8 @@ namespace Projekat
                 Doc.PagePadding = new Thickness(150, 50, 50, 50);
                 Doc.TextAlignment = TextAlignment.Justify;
                 Doc.FontStretch = FontStretches.UltraExpanded;
+                Doc.LineHeight = 30;
+
                 FlowDocReader.Document = Doc;
 
 
@@ -146,7 +150,8 @@ namespace Projekat
 
                 CloseBook.Visibility = Visibility.Visible;
                 MyMenu.Visibility = Visibility.Hidden;
-              
+                Settings.Visibility = Visibility.Visible;
+
                 this.FlowDocReader.GoToPage(1);
             }
             
@@ -177,7 +182,7 @@ namespace Projekat
                 f.WriteLine(FlowDocReader.Zoom);
                 //space between lines
                 //MessageBox.Show(""+FlowDocument.LineHeightProperty.DefaultMetadata);
-               // f.WriteLine(Doc.LineHeight);
+                f.WriteLine(Doc.LineHeight);
              
                 
                 f.Close();
