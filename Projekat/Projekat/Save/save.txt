@@ -1,0 +1,8 @@
+E:\Faks\3Godina\HCI\Projekat1\HCI---Tim-20\Projekat\Projekat\books\Irish Fairy Tales.txt
+1
+12
+Segoe UI
+#FF2F4F4F
+#00FFFFFF
+20,0,20,0
+100

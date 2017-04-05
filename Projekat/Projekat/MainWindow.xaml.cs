@@ -16,6 +16,7 @@ using Microsoft.Win32;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
+using Projekat.Settings;
 
 namespace Projekat
 {
@@ -106,6 +107,7 @@ namespace Projekat
        
             CloseBook.Visibility = Visibility.Visible;
             MyMenu.Visibility = Visibility.Hidden;
+            Settings.Visibility = Visibility.Visible;
 
             //this.FlowDocReader.GoToPage(page);
         }
@@ -197,11 +199,17 @@ namespace Projekat
             Book.Visibility = Visibility.Hidden;
             CloseBook.Visibility = Visibility.Hidden;
             MyMenu.Visibility = Visibility.Visible;
+            Settings.Visibility = Visibility.Hidden;
             //isbrisi save.txt
             FileStream f = new FileStream("../../Save/save.txt", FileMode.Create);
         }
 
-        
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            var s = new FontSettings();
+            s.Show();
+        }
+
         private void HideHandler(object sender, ExecutedRoutedEventArgs e)
         {
             if (MyMenu.Visibility == Visibility.Visible)

@@ -31,6 +31,12 @@
                 Header="_Open Book"
                 TextBlock.FontSize="16" />
             <MenuItem
+                Name="Settings"
+                Click="Settings_Click"
+                Header="_Settings"
+                TextBlock.FontSize="16"
+                Visibility="Hidden"></MenuItem>
+            <MenuItem
                 Name="CloseBook"
                 HorizontalAlignment="Right"
                 Click="CloseBook_Click"
