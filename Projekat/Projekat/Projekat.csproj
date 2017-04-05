@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Settings\DoubleToTextConverter.cs" />
     <Compile Include="Settings\FontSettings.xaml.cs">
       <DependentUpon>FontSettings.xaml</DependentUpon>
     </Compile>
@@ -134,7 +135,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Save\save.txt" />
+    <Folder Include="Save\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

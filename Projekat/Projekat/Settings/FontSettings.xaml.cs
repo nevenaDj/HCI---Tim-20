@@ -29,17 +29,17 @@ namespace Projekat.Settings
         //public FontFamily FontFamily { get; set; }
         [TypeConverterAttribute(typeof(FontSizeConverter))]
         [LocalizabilityAttribute(LocalizationCategory.None)]
-        public double FontSize { get; set; }
+        public double FontSizeAtrr { get; set; }
 
         private void SmallerButton_Click(object sender, RoutedEventArgs e)
         {
-            FontSize = -2;
+            FontSizeAtrr = -2;
 
         }
 
         private void BiggerButton_Click(object sender, RoutedEventArgs e)
         {
-            FontSize = +2;
+            FontSizeAtrr = +2;
 
         }
     }

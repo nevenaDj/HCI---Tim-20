@@ -7,9 +7,9 @@
     xmlns:local="clr-namespace:Projekat"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Book Reader"
-    Closing="Window_Closing"
     Width="800"
     Height="500"
+    Closing="Window_Closing"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.CommandBindings>
@@ -35,7 +35,7 @@
                 Click="Settings_Click"
                 Header="_Settings"
                 TextBlock.FontSize="16"
-                Visibility="Hidden"></MenuItem>
+                Visibility="Hidden" />
             <MenuItem
                 Name="CloseBook"
                 HorizontalAlignment="Right"
@@ -53,7 +53,9 @@
             <FlowDocumentPageViewer
                 Name="FlowDocReader"
                 Padding="20,0,20,0"
-                TextBlock.Foreground="DarkSlateGray" />
+                TextBlock.Foreground="DarkSlateGray">
+                <FlowDocument Name="Doc" />
+            </FlowDocumentPageViewer>
         </Grid>
     </DockPanel>
 </Window>

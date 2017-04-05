@@ -77,6 +77,7 @@ namespace Projekat
             document.PagePadding = new Thickness(150, 50, 50, 50);
             document.TextAlignment = TextAlignment.Justify;
             document.FontStretch = FontStretches.UltraExpanded;
+            document.LineHeight = 30;
 
             int page = Convert.ToInt32(s[1]);
             MessageBox.Show(""+page);
@@ -96,8 +97,8 @@ namespace Projekat
                  f.WriteLine(FlowDocReader.Zoom);
                  */
 
-
-            FlowDocReader.Document = document;
+            Doc = document;
+            FlowDocReader.Document = Doc;
            
             //komanda za sakrivanje menija
             hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
