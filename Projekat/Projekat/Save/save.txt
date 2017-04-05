@@ -1,4 +1,4 @@
-C:\Users\Sabinomi\Downloads\Irish Fairy Tales.txt
+C:/Users/Sabinomi/Downloads/Irish Fairy Tales.txt
 1
 12
 Segoe UI

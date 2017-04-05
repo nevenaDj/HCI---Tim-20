@@ -52,14 +52,20 @@ namespace Projekat
         {
             string[] s = fileContents.Split('\n');
             Book.Visibility = Visibility.Visible;
+          //  filename = s[0].Replace('\\','/');
             filename = s[0];
-            MessageBox.Show(filename); 
-               string text = File.ReadAllText(filename);
-             
-              //string text = "proba text";
-            
-              RegexOptions options = RegexOptions.None;
-              Regex regex = new Regex("[\r\n]{3,}", options);
+
+            RegexOptions options = RegexOptions.None;
+            Regex regex = new Regex("[\r\n]{3,}", options);
+            filename = regex.Replace(filename, "-*-");
+            filename = filename.Replace("\r\n", "");
+            filename = filename.Replace("\r", "");
+            filename = filename.Replace("-*-", "");
+
+            string text = File.ReadAllText(@filename, Encoding.UTF8);
+
+            //string text = "proba text";
+ 
               text = regex.Replace(text, "-*-");
               text = text.Replace("\r\n", " ");
               text = text.Replace("-*-", "\r\n\r\n");
@@ -100,8 +106,8 @@ namespace Projekat
                 //prikazi knjigu
                 Book.Visibility = Visibility.Visible;
                 filename = openFileDialog.FileName;
-                
-                string text = File.ReadAllText(filename);
+                MessageBox.Show(filename);
+                string text = File.ReadAllText(filename, Encoding.UTF8);
 
                 RegexOptions options = RegexOptions.None;
                 Regex regex = new Regex("[\r\n]{3,}", options);
@@ -140,7 +146,7 @@ namespace Projekat
             {
                 
                 StreamWriter f = new StreamWriter("../../Save/save.txt");
-                f.WriteLine(filename);
+                f.WriteLine(filename.Split('\n')[0]);
                 //page
                 f.WriteLine(FlowDocReader.MasterPageNumber);
                 //font size
@@ -153,12 +159,13 @@ namespace Projekat
                 f.WriteLine(FlowDocReader.Background);
                 //padding
                 f.WriteLine(FlowDocReader.Padding);
-                //space between lines
-                MessageBox.Show(""+FlowDocument.LineHeightProperty.DefaultMetadata);
-               // f.WriteLine(.LineHeight);
-             
                 //zoom
                 f.WriteLine(FlowDocReader.Zoom);
+                //space between lines
+                //MessageBox.Show(""+FlowDocument.LineHeightProperty.DefaultMetadata);
+               // f.WriteLine(.LineHeight);
+             
+                
                 f.Close();
             }
                 
