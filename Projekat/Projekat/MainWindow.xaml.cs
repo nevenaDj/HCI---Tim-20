@@ -25,7 +25,6 @@ namespace Projekat
     /// </summary>
     public partial class MainWindow : Window
     {
-        
         public MainWindow()
         {
             InitializeComponent();
@@ -37,23 +36,23 @@ namespace Projekat
                 fileContents = reader.ReadToEnd();
             }
 
-            if (fileContents=="")
+            if (fileContents == "")
                 MessageBox.Show("empty");
             else
             {
                 //MessageBox.Show(fileContents);
                 open(fileContents);
-
+                FlowDocReader.GoToPage(page);
             }
             f.Close();
 
         }
-
+        int page = 1;
         private void open(string fileContents)
         {
             string[] s = fileContents.Split('\n');
             Book.Visibility = Visibility.Visible;
-          //  filename = s[0].Replace('\\','/');
+            //  filename = s[0].Replace('\\','/');
             filename = s[0];
 
             RegexOptions options = RegexOptions.None;
@@ -63,54 +62,45 @@ namespace Projekat
             filename = filename.Replace("\r", "");
             filename = filename.Replace("-*-", "");
 
-            string text = File.ReadAllText(@filename, Encoding.UTF8);
+            string text = File.ReadAllText(filename, Encoding.UTF8);
 
             text = regex.Replace(text, "-*-");
             text = text.Replace("\r\n", " ");
             text = text.Replace("-*-", "\r\n\r\n");
 
-            Paragraph paragrah = new Paragraph();
-            paragrah.Inlines.Add(text);
-            FlowDocument document = new FlowDocument(paragrah);
-            document.Background = Brushes.LightYellow;
-            document.ColumnWidth = 1000;
-            document.PagePadding = new Thickness(150, 50, 50, 50);
-            document.TextAlignment = TextAlignment.Justify;
-            document.FontStretch = FontStretches.UltraExpanded;
-            document.LineHeight = 30;
+            Paragraph paragrah = new Paragraph(new Run(text));
+            //  paragrah.Inlines.Add();
+            int size = Convert.ToInt32(s[2]);   //radi
 
-            int page = Convert.ToInt32(s[1]);
-            MessageBox.Show(""+page);
-            /*     //page
-                 f.WriteLine(FlowDocReader.MasterPageNumber);
-                 //font size
-                 f.WriteLine(FlowDocReader.FontSize);
-                 //font family
-                 f.WriteLine(FlowDocReader.FontFamily);
-                 //font color
-                 f.WriteLine(FlowDocReader.Foreground);
-                 //background color
-                 f.WriteLine(FlowDocReader.Background);
-                 //padding
-                 f.WriteLine(FlowDocReader.Padding);
-                 //zoom
-                 f.WriteLine(FlowDocReader.Zoom);
-                 */
+            Doc = new FlowDocument(paragrah);
 
-            Doc = document;
+            string[] pad = s[6].Split(',');   //ne dobijem dobru padding
+            Doc.ColumnWidth = 1000;
+            Doc.PagePadding = new Thickness(Convert.ToInt32(pad[0]), Convert.ToInt32(pad[1]), Convert.ToInt32(pad[2]), Convert.ToInt32(pad[3]));
+            Doc.TextAlignment = TextAlignment.Justify;
+            Doc.FontStretch = FontStretches.UltraExpanded;
+            Doc.FontSize = size;       //radi
+            Doc.FontFamily = new FontFamily(s[3]);  //radi
+            Color color = (Color)ColorConverter.ConvertFromString(s[4]);
+            SolidColorBrush brush = new SolidColorBrush(color);
+            Doc.Foreground = brush;  //ne radi
+            Color color2 = (Color)ColorConverter.ConvertFromString(s[5]);
+            SolidColorBrush brush2 = new SolidColorBrush(color2);
+            Doc.Background = brush2;  //ne radi
+            page = Convert.ToInt32(s[1]);  //okej -> samo ne radi jump
+
             FlowDocReader.Document = Doc;
-           
+            FlowDocReader.Zoom = Convert.ToInt32(s[7]);   //radi
             //komanda za sakrivanje menija
             hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
             CommandBinding cb = new CommandBinding(hideMenu);
             cb.Executed += new ExecutedRoutedEventHandler(HideHandler);
             this.CommandBindings.Add(cb);
-       
+
             CloseBook.Visibility = Visibility.Visible;
             MyMenu.Visibility = Visibility.Hidden;
-            Settings.Visibility = Visibility.Visible;
 
-            //this.FlowDocReader.GoToPage(page);
+            MessageBox.Show("" + FlowDocReader.CanGoToPage(2));
         }
 
         private static RoutedCommand hideMenu = new RoutedCommand();
@@ -138,13 +128,15 @@ namespace Projekat
 
                 Paragraph paragrah = new Paragraph();
                 paragrah.Inlines.Add(text);
-                FlowDocument document = new FlowDocument(paragrah);
-                document.Background = Brushes.LightYellow;
-                document.ColumnWidth = 1000;
-                document.PagePadding = new Thickness(150,50,50,50);
-                document.TextAlignment = TextAlignment.Justify;
-                document.FontStretch = FontStretches.UltraExpanded;
-                FlowDocReader.Document = document;
+            
+                Doc = new FlowDocument(paragrah);
+                Doc.Background = Brushes.LightYellow;
+                Doc.ColumnWidth = 1000;
+                Doc.PagePadding = new Thickness(150, 50, 50, 50);
+                Doc.TextAlignment = TextAlignment.Justify;
+                Doc.FontStretch = FontStretches.UltraExpanded;
+                FlowDocReader.Document = Doc;
+
 
                 //komanda za sakrivanje menija
                 hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
@@ -171,20 +163,21 @@ namespace Projekat
                 //page
                 f.WriteLine(FlowDocReader.MasterPageNumber);
                 //font size
-                f.WriteLine(FlowDocReader.FontSize);
+                f.WriteLine(Doc.FontSize);
                 //font family
-                f.WriteLine(FlowDocReader.FontFamily);
+                f.WriteLine(Doc.FontFamily);
                 //font color
-                f.WriteLine(FlowDocReader.Foreground);
+                f.WriteLine(Doc.Foreground);
                 //background color
                 f.WriteLine(FlowDocReader.Background);
                 //padding
-                f.WriteLine(FlowDocReader.Padding);
+             //   MessageBox.Show(""+ Doc.PagePadding);
+                f.WriteLine(Doc.PagePadding);
                 //zoom
                 f.WriteLine(FlowDocReader.Zoom);
                 //space between lines
                 //MessageBox.Show(""+FlowDocument.LineHeightProperty.DefaultMetadata);
-               // f.WriteLine(.LineHeight);
+               // f.WriteLine(Doc.LineHeight);
              
                 
                 f.Close();
