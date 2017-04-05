@@ -40,7 +40,7 @@ namespace Projekat
                 MessageBox.Show("empty");
             else
             {
-                MessageBox.Show(fileContents);
+                //MessageBox.Show(fileContents);
                 open(fileContents);
 
             }
@@ -64,32 +64,50 @@ namespace Projekat
 
             string text = File.ReadAllText(@filename, Encoding.UTF8);
 
-            //string text = "proba text";
- 
-              text = regex.Replace(text, "-*-");
-              text = text.Replace("\r\n", " ");
-              text = text.Replace("-*-", "\r\n\r\n");
-            
-              Paragraph paragrah = new Paragraph();
-              paragrah.Inlines.Add(text);
-              FlowDocument document = new FlowDocument(paragrah);
-              document.Background = Brushes.LightYellow;
-              document.ColumnWidth = 1000;
-              document.PagePadding = new Thickness(150, 50, 50, 50);
-              document.TextAlignment = TextAlignment.Justify;
-              document.FontStretch = FontStretches.UltraExpanded;
-              FlowDocReader.Document = document;
+            text = regex.Replace(text, "-*-");
+            text = text.Replace("\r\n", " ");
+            text = text.Replace("-*-", "\r\n\r\n");
+
+            Paragraph paragrah = new Paragraph();
+            paragrah.Inlines.Add(text);
+            FlowDocument document = new FlowDocument(paragrah);
+            document.Background = Brushes.LightYellow;
+            document.ColumnWidth = 1000;
+            document.PagePadding = new Thickness(150, 50, 50, 50);
+            document.TextAlignment = TextAlignment.Justify;
+            document.FontStretch = FontStretches.UltraExpanded;
+
+            int page = Convert.ToInt32(s[1]);
+            MessageBox.Show(""+page);
+            /*     //page
+                 f.WriteLine(FlowDocReader.MasterPageNumber);
+                 //font size
+                 f.WriteLine(FlowDocReader.FontSize);
+                 //font family
+                 f.WriteLine(FlowDocReader.FontFamily);
+                 //font color
+                 f.WriteLine(FlowDocReader.Foreground);
+                 //background color
+                 f.WriteLine(FlowDocReader.Background);
+                 //padding
+                 f.WriteLine(FlowDocReader.Padding);
+                 //zoom
+                 f.WriteLine(FlowDocReader.Zoom);
+                 */
+
+
+            FlowDocReader.Document = document;
            
-              //komanda za sakrivanje menija
-              hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
-              CommandBinding cb = new CommandBinding(hideMenu);
-              cb.Executed += new ExecutedRoutedEventHandler(HideHandler);
-              this.CommandBindings.Add(cb);
+            //komanda za sakrivanje menija
+            hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
+            CommandBinding cb = new CommandBinding(hideMenu);
+            cb.Executed += new ExecutedRoutedEventHandler(HideHandler);
+            this.CommandBindings.Add(cb);
+       
+            CloseBook.Visibility = Visibility.Visible;
+            MyMenu.Visibility = Visibility.Hidden;
 
-              CloseBook.Visibility = Visibility.Visible;
-              MyMenu.Visibility = Visibility.Hidden;
-
-              this.FlowDocReader.GoToPage(1);
+            //this.FlowDocReader.GoToPage(page);
         }
 
         private static RoutedCommand hideMenu = new RoutedCommand();
