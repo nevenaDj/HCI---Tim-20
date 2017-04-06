@@ -22,25 +22,8 @@ namespace Projekat.Settings
     {
         public FontSettings()
         {
+
             InitializeComponent();
-        }
-
-       // public FontStyle FontStyle { get; set; }
-        //public FontFamily FontFamily { get; set; }
-        [TypeConverterAttribute(typeof(FontSizeConverter))]
-        [LocalizabilityAttribute(LocalizationCategory.None)]
-        public double FontSizeAtrr { get; set; }
-
-        private void SmallerButton_Click(object sender, RoutedEventArgs e)
-        {
-            FontSizeAtrr = -2;
-
-        }
-
-        private void BiggerButton_Click(object sender, RoutedEventArgs e)
-        {
-            FontSizeAtrr = +2;
-
         }
     }
 }

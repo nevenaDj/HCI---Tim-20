@@ -1,9 +1,9 @@
-C:\Users\Sabinomi\Downloads\Irish Fairy Tales.txt
-17
-16
-Georgia
+C:\Users\Nevena Djeric\Downloads\345-8\345-8.txt
+439
+26,3392857142857
+Segoe UI
 #FF2F4F4F
 #00FFFFFF
-150,50,50,50
+Auto,Auto,Auto,Auto
 100
-30
+NaN

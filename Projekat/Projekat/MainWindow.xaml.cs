@@ -17,18 +17,24 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
 using Projekat.Settings;
+using System.Collections.ObjectModel;
+
+
 
 namespace Projekat
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window,INotifyPropertyChanged
     {
         public MainWindow()
         {
             InitializeComponent();
+            
 
+            //Meni ovo ne radi !!!! - Nevena
+            
             FileStream f = new FileStream("../../Save/save.txt", FileMode.Open);
             string fileContents;
             using (StreamReader reader = new StreamReader(f))
@@ -45,7 +51,8 @@ namespace Projekat
                 FlowDocReader.GoToPage(page);
             }
             f.Close();
-
+            
+            this.DataContext = this;
         }
         int page = 1;
         private void open(string fileContents)
@@ -128,18 +135,20 @@ namespace Projekat
                 text = text.Replace("\r\n", " ");
                 text = text.Replace("-*-", "\r\n\r\n");
 
-                Paragraph paragrah = new Paragraph();
-                paragrah.Inlines.Add(text);
-            
-                Doc = new FlowDocument(paragrah);
-                Doc.Background = Brushes.LightYellow;
-                Doc.ColumnWidth = 1000;
-                Doc.PagePadding = new Thickness(150, 50, 50, 50);
-                Doc.TextAlignment = TextAlignment.Justify;
-                Doc.FontStretch = FontStretches.UltraExpanded;
-                Doc.LineHeight = 30;
 
-                FlowDocReader.Document = Doc;
+                //Paragraph paragrah = new Paragraph();
+                Par.Inlines.Clear();
+                Par.Inlines.Add(text);
+
+                //Doc = new FlowDocument(paragrah);
+                //Doc.Background = Brushes.LightYellow;
+                //Doc.ColumnWidth = 1000;
+                //Doc.PagePadding = new Thickness(150, 50, 50, 50);
+                //Doc.TextAlignment = TextAlignment.Justify;
+                //Doc.FontStretch = FontStretches.UltraExpanded;
+                // Doc.LineHeight = 30;
+
+                //FlowDocReader.Document = Doc;
 
 
                 //komanda za sakrivanje menija
@@ -151,6 +160,7 @@ namespace Projekat
                 CloseBook.Visibility = Visibility.Visible;
                 MyMenu.Visibility = Visibility.Hidden;
                 Settings.Visibility = Visibility.Visible;
+                NightMode.Visibility = Visibility.Visible;
 
                 this.FlowDocReader.GoToPage(1);
             }
@@ -205,8 +215,31 @@ namespace Projekat
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            var s = new FontSettings();
-            s.Show();
+            this.DataContext = this;
+            Theme = new ObservableCollection<string>();
+            Theme.Add("Black on white");
+            Theme.Add("Sepia");
+            Theme.Add("Night");
+
+            Fonts = new ObservableCollection<string>();
+
+            foreach (System.Drawing.FontFamily font in System.Drawing.FontFamily.Families)
+            {
+                Fonts.Add(font.Name);
+            }
+
+            FontSettings newWindow = new FontSettings()
+            {
+                DataContext = this
+            };
+            newWindow.ShowDialog();
+        }
+
+        private void NightMode_Click(object sender, RoutedEventArgs e)
+        {
+            
+          
+            
         }
 
         private void HideHandler(object sender, ExecutedRoutedEventArgs e)
@@ -241,5 +274,97 @@ namespace Projekat
                 ResizeMode = ResizeMode.NoResize;
             }
         }
+
+        #region NotifyProperties
+        private string _lineSpacing;
+        private string _margins;
+        private string _fontSize;
+        private string _font;
+        public string LineSpacing
+        {
+            get
+            {
+                return _lineSpacing;
+            }
+            set
+            {
+                if (value != _lineSpacing)
+                {
+                    _lineSpacing = value;
+                    OnPropertyChanged("LineSpacing");
+                }
+            }
+        }
+        public string Margins
+        {
+            get
+            {
+                return _margins;
+            }
+            set
+            {
+                if (value != _margins)
+                {
+                    _margins = value;
+                    OnPropertyChanged("Margins");
+                }
+            }
+        }
+        public string FontSizeD
+        {
+            get
+            {
+                return _fontSize;
+            }
+            set
+            {
+                if (value != _fontSize)
+                {
+                    _fontSize = value;
+                    OnPropertyChanged("FontSizeD");
+                }
+            }
+        }
+
+        public string Font
+        {
+            get
+            {
+                return _font;
+            }
+            set
+            {
+                if (value != _font)
+                {
+                    _font = value;
+                    OnPropertyChanged("Font");
+                }
+            }
+        }
+
+        public ObservableCollection<string> Theme
+        {
+            get;
+            set;
+        }
+
+        public ObservableCollection<string> Fonts
+        {
+            get;
+            set;
+        }
+
+        #endregion
+        #region PropertyChangedNotifier
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
     }
 }
