@@ -141,6 +141,24 @@
   <ItemGroup>
     <Folder Include="Save\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="books\A Study in Scarlet by Arthur Conan Doyle.txt" />
+    <Resource Include="books\Anna Karenina by Lev Tolstoj.txt" />
+    <Resource Include="books\Around the World in Eighty Days by Jules Verne.txt" />
+    <Resource Include="books\Dorothy and the Wizard in Oz by L. Frank Baum.txt" />
+    <Resource Include="books\Dracula by Bram Stoker.txt" />
+    <Resource Include="books\Tarzan of the Apes by Edgar rice Burroughs.txt" />
+    <Resource Include="books\The Adventures of Sherlock Holmes by Arthur Conan Doyle.txt" />
+    <Resource Include="books\The Jungle Book by Rudyard Kipling.txt" />
+    <Resource Include="books\The Legends of Kinf Arthur and His Knights by Knowles and Malory.txt" />
+    <Resource Include="books\The Mysterious Affair at Styles by Agatha Christie.txt" />
+    <Resource Include="books\The Phantom of the Opera by Gaston Leroux.txt" />
+    <Resource Include="books\The Picture of Dorian Gray by Oscar Wilde.txt" />
+    <Resource Include="books\The Three Musketeers by Alexandre Dumas.txt" />
+    <Resource Include="books\The Time Machine by H. G. Wells.txt" />
+    <Resource Include="books\The Works of Edgar Allan Poe - Volume 1 by Edgar Allan Poe.txt" />
+    <Resource Include="books\War and Peace by Lev Tolstoj.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

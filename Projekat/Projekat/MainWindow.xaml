@@ -853,14 +853,14 @@
                                             BorderBrush="{TemplateBinding BorderBrush}"
                                             BorderThickness="{TemplateBinding BorderThickness}">
                                             <AdornerDecorator Uid="AdornerDecorator_1" ClipToBounds="True">
-                                                <DocumentPageView
+                                                <DocumentPageView                                                       
                                                     Uid="DocumentPageView_1"
                                                     DocumentPaginator="{x:Null}"
                                                     DocumentViewerBase.IsMasterPage="True"
                                                     KeyboardNavigation.IsTabStop="False"
                                                     KeyboardNavigation.TabIndex="1"
                                                     KeyboardNavigation.TabNavigation="None"
-                                                    PageNumber="1" />
+                                                    PageNumber="{Binding Path=Page, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                                             </AdornerDecorator>
                                         </Border>
                                     </DockPanel>
