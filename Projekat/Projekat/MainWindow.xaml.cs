@@ -35,7 +35,7 @@ namespace Projekat
 
             //Meni ovo ne radi !!!! - Nevena
             
-            FileStream f = new FileStream("../../Save/save.txt", FileMode.Open);
+            FileStream f = new FileStream("../../Save/save.txt", FileMode.OpenOrCreate);
             string fileContents;
             using (StreamReader reader = new StreamReader(f))
             {
@@ -51,6 +51,7 @@ namespace Projekat
                 FlowDocReader.GoToPage(page);
             }
             f.Close();
+            
             
             this.DataContext = this;
         }
@@ -162,7 +163,10 @@ namespace Projekat
                 Settings.Visibility = Visibility.Visible;
                 NightMode.Visibility = Visibility.Visible;
 
-                this.FlowDocReader.GoToPage(1);
+                this.FlowDocReader.GoToPage(50);
+                FontSizeD = 20;
+                LineSpacing = 20;
+
             }
             
         }
@@ -276,11 +280,11 @@ namespace Projekat
         }
 
         #region NotifyProperties
-        private string _lineSpacing;
-        private string _margins;
-        private string _fontSize;
+        private double _lineSpacing;
+        private double _margins;
+        private double _fontSize;
         private string _font;
-        public string LineSpacing
+        public double LineSpacing
         {
             get
             {
@@ -295,7 +299,7 @@ namespace Projekat
                 }
             }
         }
-        public string Margins
+        public double Margins
         {
             get
             {
@@ -310,7 +314,7 @@ namespace Projekat
                 }
             }
         }
-        public string FontSizeD
+        public double FontSizeD
         {
             get
             {
