@@ -53,6 +53,7 @@
                 Header="_Close Book"
                 TextBlock.FontSize="16"
                 Visibility="Hidden" />
+
         </Menu>
         <Grid
             x:Name="Book"
@@ -85,6 +86,7 @@
                                             Background="{TemplateBinding Background}"
                                             DockPanel.Dock="Bottom">
                                             <Grid.ColumnDefinitions>
+                                                
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="*" />
@@ -256,6 +258,20 @@
                                                             Fill="{TemplateBinding Foreground}" />
                                                     </Viewbox>
                                                 </RepeatButton>
+                                            </StackPanel>
+                                            <StackPanel
+                                                Uid="StackPanel_2"
+                                                Grid.Column="0"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                Orientation="Horizontal">
+                                                <TextBlock
+                                                    Uid="TextBlock_5555"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"><Run Text=" " /><Run Text=" " />
+                                                    <TextBox Width="50" Text="{Binding Path=PageNum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" > </TextBox> 
+                                                    <Button Height="20" Width="30" Click="GoToPage_Click">Go</Button>
+                                                </TextBlock>
                                             </StackPanel>
                                             <Grid
                                                 Uid="Grid_24"

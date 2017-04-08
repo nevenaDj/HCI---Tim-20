@@ -33,7 +33,7 @@ namespace Projekat
 
 
             //Meni ovo ne radi !!!! - Nevena
-            Page = "1";
+            Page = "0";
             FileStream f = new FileStream("../../Save/save.txt", FileMode.OpenOrCreate);
             string fileContents;
             using (StreamReader reader = new StreamReader(f))
@@ -41,11 +41,8 @@ namespace Projekat
                 fileContents = reader.ReadToEnd();
             }
 
-            if (fileContents == "")
-                MessageBox.Show("empty");
-            else
+            if (fileContents != "")
             {
-                //MessageBox.Show(fileContents);
                 open(fileContents);
                 FlowDocReader.GoToPage(Convert.ToInt32(Page));
             }
@@ -59,6 +56,7 @@ namespace Projekat
         {
             string[] s = fileContents.Split('\n');
             Book.Visibility = Visibility.Visible;
+
             //  filename = s[0].Replace('\\','/');
             filename = s[0];
 
@@ -75,18 +73,12 @@ namespace Projekat
             text = text.Replace("\r\n", " ");
             text = text.Replace("-*-", "\r\n\r\n");
 
-            Paragraph paragrah = new Paragraph(new Run(text));
-            //  paragrah.Inlines.Add();
             int size = Convert.ToInt32(s[2]);   //radi
-
-           // Doc = new FlowDocument(paragrah);
-
             string[] pad = s[6].Split(',');   //ne dobijem dobru padding
            /* Doc.ColumnWidth = 1000;
             Doc.PagePadding = new Thickness(Convert.ToInt32(pad[0]), Convert.ToInt32(pad[1]), Convert.ToInt32(pad[2]), Convert.ToInt32(pad[3]));
             Doc.TextAlignment = TextAlignment.Justify;
             Doc.FontStretch = FontStretches.UltraExpanded;
-            Doc.FontSize = size;       //radi
             Doc.FontFamily = new FontFamily(s[3]);  //radi
             Color color = (Color)ColorConverter.ConvertFromString(s[4]);
             SolidColorBrush brush = new SolidColorBrush(color);
@@ -97,39 +89,35 @@ namespace Projekat
             Page = s[1];  //okej -> samo ne radi jump
             Par.Inlines.Clear();
             Par.Inlines.Add(text);
+            FontSizeD = size;
+            LineSpacing = Convert.ToInt32(s[8]); 
+            FlowDocReader.Zoom = Convert.ToInt32(s[7]);   //radi
 
-            //  Doc.LineHeight = Convert.ToInt32(s[8]);
-
-            // FlowDocReader.Document = Doc;
-            //FlowDocReader.Zoom = Convert.ToInt32(s[7]);   //radi
             //komanda za sakrivanje menija
             hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
             CommandBinding cb = new CommandBinding(hideMenu);
             cb.Executed += new ExecutedRoutedEventHandler(HideHandler);
             this.CommandBindings.Add(cb);
 
+            PageNum = Convert.ToInt32(Page)+1;
+
             CloseBook.Visibility = Visibility.Visible;
             MyMenu.Visibility = Visibility.Hidden;
             Settings.Visibility = Visibility.Visible;
-            
-            /*
-            DocumentPageView pageView = new DocumentPageView();
-            pageView.VerticalAlignment = VerticalAlignment.Center;
-            pageView.HorizontalAlignment = HorizontalAlignment.Center;
-            pageView.Stretch = System.Windows.Media.Stretch.Uniform;
-            pageView.PageNumber = Convert.ToInt32(Page);
-            pageView.StretchDirection = StretchDirection.Both;
-            pageView.DocumentPaginator = ((IDocumentPaginatorSource)Doc).DocumentPaginator;*/
+            //GoToPage.Visibility = Visibility.Visible;
 
-            MessageBox.Show("" + FlowDocReader.CanGoToPage(2));
+
             
 
         }
 
         private static RoutedCommand hideMenu = new RoutedCommand();
         string filename ="";
+
         private void OpenBook_Click(object sender, RoutedEventArgs e)
         {
+            FileStream f = new FileStream("../../Save/save.txt", FileMode.Create);
+
             //otvori dijalog za izbor knjige
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.DefaultExt = ".txt";
@@ -149,12 +137,10 @@ namespace Projekat
                 text = text.Replace("\r\n", " ");
                 text = text.Replace("-*-", "\r\n\r\n");
 
-
-                //Paragraph paragrah = new Paragraph();
                 Par.Inlines.Clear();
                 Par.Inlines.Add(text);
 
-                //Doc = new FlowDocument(paragrah);
+
                 //Doc.Background = Brushes.LightYellow;
                 //Doc.ColumnWidth = 1000;
                 //Doc.PagePadding = new Thickness(150, 50, 50, 50);
@@ -162,7 +148,6 @@ namespace Projekat
                 //Doc.FontStretch = FontStretches.UltraExpanded;
                 // Doc.LineHeight = 30;
 
-                //FlowDocReader.Document = Doc;
 
 
                 //komanda za sakrivanje menija
@@ -175,12 +160,14 @@ namespace Projekat
                 MyMenu.Visibility = Visibility.Hidden;
                 Settings.Visibility = Visibility.Visible;
                 NightMode.Visibility = Visibility.Visible;
+       
                 Page = "0";
                 this.FlowDocReader.GoToPage(1);
+                PageNum = 1;
           
-                FontSizeD = 20;
+                FontSizeD = 12;
                 LineSpacing = 20;
-                //PVDox.pageNumber = 3;
+                
             }
             
         }
@@ -217,7 +204,6 @@ namespace Projekat
             }
                 
 
-            // If data is dirty, notify user and ask for a response
 
         }
 
@@ -229,6 +215,13 @@ namespace Projekat
             Settings.Visibility = Visibility.Hidden;
             //isbrisi save.txt
             FileStream f = new FileStream("../../Save/save.txt", FileMode.Create);
+        }
+
+        private void GoToPage_Click(object sender, RoutedEventArgs e)
+        {
+
+            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
@@ -299,6 +292,8 @@ namespace Projekat
         private double _fontSize;
         private string _font;
         private string _page;
+        private int _pageNum;
+
         public double LineSpacing
         {
             get
@@ -373,6 +368,22 @@ namespace Projekat
                 {
                     _page = value;
                     OnPropertyChanged("Page");
+                }
+            }
+        }
+
+        public int PageNum
+        {
+            get
+            {
+                return _pageNum;
+            }
+            set
+            {
+                if (value != _pageNum)
+                {
+                    _pageNum = value;
+                    OnPropertyChanged("PageNum");
                 }
             }
         }
