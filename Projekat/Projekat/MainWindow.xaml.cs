@@ -110,6 +110,11 @@ namespace Projekat
             MyMenu.Visibility = Visibility.Hidden;
             Settings.Visibility = Visibility.Visible;
 
+            //Margin
+            Margins = "150";
+            ChangeMargin = new Thickness(150, 10, 150, 10);
+            
+
             MessageBox.Show("" + FlowDocReader.CanGoToPage(2));
         }
 
@@ -149,7 +154,7 @@ namespace Projekat
                 //Doc.FontStretch = FontStretches.UltraExpanded;
                 // Doc.LineHeight = 30;
 
-                //FlowDocReader.Document = Doc;
+               FlowDocReader.Document = Doc;
 
 
                 //komanda za sakrivanje menija
@@ -163,7 +168,7 @@ namespace Projekat
                 Settings.Visibility = Visibility.Visible;
                 NightMode.Visibility = Visibility.Visible;
 
-                this.FlowDocReader.GoToPage(50);
+                this.FlowDocReader.GoToPage(20);
                 FontSizeD = 20;
                 LineSpacing = 20;
 
@@ -281,9 +286,10 @@ namespace Projekat
 
         #region NotifyProperties
         private double _lineSpacing;
-        private double _margins;
+        private string _margins;
         private double _fontSize;
         private string _font;
+        private Thickness _changeMargin;
         public double LineSpacing
         {
             get
@@ -299,7 +305,7 @@ namespace Projekat
                 }
             }
         }
-        public double Margins
+        public string Margins
         {
             get
             {
@@ -310,7 +316,25 @@ namespace Projekat
                 if (value != _margins)
                 {
                     _margins = value;
+                    double m = Convert.ToDouble(_margins);
+                    ChangeMargin = new Thickness(m, 0, m, 0);
+
                     OnPropertyChanged("Margins");
+                }
+            }
+        }
+        public Thickness ChangeMargin
+        {
+            get
+            {
+                return _changeMargin;
+            }
+            set
+            {
+                if (value != _changeMargin)
+                {
+                    _changeMargin = value;
+                    OnPropertyChanged("ChangeMargin");
                 }
             }
         }

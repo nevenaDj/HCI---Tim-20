@@ -884,7 +884,7 @@
                     FontFamily="{Binding Font, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     FontSize="{Binding FontSizeD, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     LineHeight="{Binding LineSpacing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    PagePadding="{Binding Margins, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                    PagePadding="{Binding Path=ChangeMargin, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
                     <Paragraph x:Name="Par">
                         <Run Text="Text" />
                     </Paragraph>

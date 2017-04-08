@@ -137,7 +137,7 @@
             <TextBlock
                 Width="14"
                 RenderTransformOrigin="1.718,0.552"
-                Text="{Binding Path=Margins, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                Text="{Binding Path=Margins, UpdateSourceTrigger=PropertyChanged}" />
             <Slider
                 x:Name="margin"
                 Width="235"
@@ -157,7 +157,7 @@
                 FontFamily="{Binding Path=Font, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 FontSize="{Binding Path=FontSizeD, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 LineHeight="{Binding Path=LineSpacing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                PagePadding="{Binding Path=Margins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                PagePadding="{Binding Path=ChangeMargin, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <Paragraph>
                     Ovo je primer.
