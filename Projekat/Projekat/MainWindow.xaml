@@ -10,8 +10,8 @@
     xmlns:stt="clr-namespace:Projekat.Settings"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     Title="Book Reader"
-    Width="800"
-    Height="500"
+    Width="{Binding Path=WidthW, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+    Height="{Binding Path=HeightW, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
     Closing="Window_Closing"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -53,6 +53,7 @@
                 Header="_Close Book"
                 TextBlock.FontSize="16"
                 Visibility="Hidden" />
+
         </Menu>
         <Grid
             x:Name="Book"
@@ -64,7 +65,8 @@
                 x:Name="FlowDocReader"
                 Padding="20,0,20,0"
                 Style="{DynamicResource FlowDocumentPageViewerStyle1}"
-                TextBlock.Foreground="DarkSlateGray">
+                
+                TextBlock.Foreground="{Binding ColorF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <FlowDocumentPageViewer.Resources>
                     <Style x:Key="FlowDocumentPageViewerStyle1" TargetType="{x:Type FlowDocumentPageViewer}">
                         <Setter Property="Background" Value="Transparent" />
@@ -79,15 +81,19 @@
                                         Uid="DockPanel_2"
                                         Language="en-us"
                                         LastChildFill="True">
+
                                         <Grid
                                             Uid="Grid_23"
                                             HorizontalAlignment="Stretch"
                                             Background="{TemplateBinding Background}"
                                             DockPanel.Dock="Bottom">
                                             <Grid.ColumnDefinitions>
+
+                                                <ColumnDefinition Width="250" />
                                                 <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+
                                             </Grid.ColumnDefinitions>
                                             <Border
                                                 x:Name="PART_FindToolBarHost"
@@ -96,6 +102,7 @@
                                                 HorizontalAlignment="Left"
                                                 VerticalAlignment="Center"
                                                 Visibility="Collapsed" />
+
                                             <StackPanel
                                                 Uid="StackPanel_1"
                                                 Grid.Column="1"
@@ -257,9 +264,24 @@
                                                     </Viewbox>
                                                 </RepeatButton>
                                             </StackPanel>
+                                            <StackPanel
+                                                Uid="StackPanel_2"
+                                                Grid.Column="2"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Orientation="Horizontal">
+                                                <TextBlock
+                                                    Uid="TextBlock_5555"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"><Run Text=" " /><Run Text=" " />
+                                                    <TextBox Width="50" Text="{Binding Path=PageNum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" > </TextBox> 
+                                                    <Button Height="20" Width="30" Click="GoToPage_Click">Go</Button>
+                                                </TextBlock>
+                                            </StackPanel>
+
                                             <Grid
                                                 Uid="Grid_24"
-                                                Grid.Column="2"
+                                                Grid.Column="3"
                                                 HorizontalAlignment="Right"
                                                 VerticalAlignment="Center">
                                                 <Grid.ColumnDefinitions>
@@ -674,7 +696,7 @@
                                                 </Slider>
                                                 <RepeatButton
                                                     Uid="RepeatButton_6"
-                                                    Grid.Column="2"
+                                                    Grid.Column="3"
                                                     Width="{TemplateBinding FontSize}"
                                                     Height="{TemplateBinding FontSize}"
                                                     BorderBrush="{TemplateBinding BorderBrush}"
@@ -844,6 +866,7 @@
                                                     </RepeatButton.Style>
                                                 </RepeatButton>
                                             </Grid>
+
                                         </Grid>
                                         <Border
                                             Uid="Border_47"
@@ -853,14 +876,14 @@
                                             BorderBrush="{TemplateBinding BorderBrush}"
                                             BorderThickness="{TemplateBinding BorderThickness}">
                                             <AdornerDecorator Uid="AdornerDecorator_1" ClipToBounds="True">
-                                                <DocumentPageView
+                                                <DocumentPageView                                                       
                                                     Uid="DocumentPageView_1"
                                                     DocumentPaginator="{x:Null}"
                                                     DocumentViewerBase.IsMasterPage="True"
                                                     KeyboardNavigation.IsTabStop="False"
                                                     KeyboardNavigation.TabIndex="1"
                                                     KeyboardNavigation.TabNavigation="None"
-                                                    PageNumber="1" />
+                                                    PageNumber="{Binding Path=Page, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                                             </AdornerDecorator>
                                         </Border>
                                     </DockPanel>
@@ -881,6 +904,9 @@
                 <FlowDocument
                     x:Name="Doc"
                     ColumnWidth="1000"
+                    TextAlignment="Justify"
+                    FontStretch="UltraExpanded"
+                    Background="{Binding ColorB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     FontFamily="{Binding Font, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     FontSize="{Binding FontSizeD, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     LineHeight="{Binding LineSpacing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
