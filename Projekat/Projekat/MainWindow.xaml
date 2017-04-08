@@ -10,8 +10,8 @@
     xmlns:stt="clr-namespace:Projekat.Settings"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     Title="Book Reader"
-    Width="800"
-    Height="500"
+    Width="{Binding Path=WidthW, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+    Height="{Binding Path=HeightW, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
     Closing="Window_Closing"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -65,7 +65,8 @@
                 x:Name="FlowDocReader"
                 Padding="20,0,20,0"
                 Style="{DynamicResource FlowDocumentPageViewerStyle1}"
-                TextBlock.Foreground="DarkSlateGray">
+                
+                TextBlock.Foreground="{Binding ColorF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <FlowDocumentPageViewer.Resources>
                     <Style x:Key="FlowDocumentPageViewerStyle1" TargetType="{x:Type FlowDocumentPageViewer}">
                         <Setter Property="Background" Value="Transparent" />
@@ -80,16 +81,19 @@
                                         Uid="DockPanel_2"
                                         Language="en-us"
                                         LastChildFill="True">
+
                                         <Grid
                                             Uid="Grid_23"
                                             HorizontalAlignment="Stretch"
                                             Background="{TemplateBinding Background}"
                                             DockPanel.Dock="Bottom">
                                             <Grid.ColumnDefinitions>
-                                                
-                                                <ColumnDefinition Width="*" />
+
+                                                <ColumnDefinition Width="400" />
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+
                                             </Grid.ColumnDefinitions>
                                             <Border
                                                 x:Name="PART_FindToolBarHost"
@@ -98,6 +102,7 @@
                                                 HorizontalAlignment="Left"
                                                 VerticalAlignment="Center"
                                                 Visibility="Collapsed" />
+
                                             <StackPanel
                                                 Uid="StackPanel_1"
                                                 Grid.Column="1"
@@ -261,8 +266,8 @@
                                             </StackPanel>
                                             <StackPanel
                                                 Uid="StackPanel_2"
-                                                Grid.Column="0"
-                                                HorizontalAlignment="Left"
+                                                Grid.Column="2"
+                                                HorizontalAlignment="Right"
                                                 VerticalAlignment="Center"
                                                 Orientation="Horizontal">
                                                 <TextBlock
@@ -273,9 +278,10 @@
                                                     <Button Height="20" Width="30" Click="GoToPage_Click">Go</Button>
                                                 </TextBlock>
                                             </StackPanel>
+
                                             <Grid
                                                 Uid="Grid_24"
-                                                Grid.Column="2"
+                                                Grid.Column="3"
                                                 HorizontalAlignment="Right"
                                                 VerticalAlignment="Center">
                                                 <Grid.ColumnDefinitions>
@@ -690,7 +696,7 @@
                                                 </Slider>
                                                 <RepeatButton
                                                     Uid="RepeatButton_6"
-                                                    Grid.Column="2"
+                                                    Grid.Column="3"
                                                     Width="{TemplateBinding FontSize}"
                                                     Height="{TemplateBinding FontSize}"
                                                     BorderBrush="{TemplateBinding BorderBrush}"
@@ -860,6 +866,7 @@
                                                     </RepeatButton.Style>
                                                 </RepeatButton>
                                             </Grid>
+
                                         </Grid>
                                         <Border
                                             Uid="Border_47"
@@ -897,6 +904,9 @@
                 <FlowDocument
                     x:Name="Doc"
                     ColumnWidth="1000"
+                    TextAlignment="Justify"
+                    FontStretch="UltraExpanded"
+                    Background="{Binding ColorB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     FontFamily="{Binding Font, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     FontSize="{Binding FontSizeD, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     LineHeight="{Binding LineSpacing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

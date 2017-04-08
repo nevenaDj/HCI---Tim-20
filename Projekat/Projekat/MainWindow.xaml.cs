@@ -33,7 +33,7 @@ namespace Projekat
 
 
             //Meni ovo ne radi !!!! - Nevena
-            Page = "0";
+            Page = 0;
             FileStream f = new FileStream("../../Save/save.txt", FileMode.OpenOrCreate);
             string fileContents;
             using (StreamReader reader = new StreamReader(f))
@@ -45,6 +45,11 @@ namespace Projekat
             {
                 open(fileContents);
                 FlowDocReader.GoToPage(Convert.ToInt32(Page));
+            }
+            else
+            {
+                HeightW = 500;
+                WidthW = 800;
             }
             f.Close();
             
@@ -73,25 +78,21 @@ namespace Projekat
             text = text.Replace("\r\n", " ");
             text = text.Replace("-*-", "\r\n\r\n");
 
-            int size = Convert.ToInt32(s[2]);   //radi
-            string[] pad = s[6].Split(',');   //ne dobijem dobru padding
-           /* Doc.ColumnWidth = 1000;
-            Doc.PagePadding = new Thickness(Convert.ToInt32(pad[0]), Convert.ToInt32(pad[1]), Convert.ToInt32(pad[2]), Convert.ToInt32(pad[3]));
-            Doc.TextAlignment = TextAlignment.Justify;
-            Doc.FontStretch = FontStretches.UltraExpanded;
-            Doc.FontFamily = new FontFamily(s[3]);  //radi
-            Color color = (Color)ColorConverter.ConvertFromString(s[4]);
-            SolidColorBrush brush = new SolidColorBrush(color);
-            Doc.Foreground = brush;  //ne radi
-            Color color2 = (Color)ColorConverter.ConvertFromString(s[5]);
-            SolidColorBrush brush2 = new SolidColorBrush(color2);
-            Doc.Background = brush2;  //ne radi*/
-            Page = s[1];  //okej -> samo ne radi jump
+            int size = Convert.ToInt32(s[2]);   //radi                                          
+            Margins = Convert.ToDouble(s[6]);           
+            Font=s[3];
+            //font
+            ColorB = s[5];
+            ColorF = s[4];
+
+            Page = Convert.ToInt32(s[1]);  //okej -> samo ne radi jump
             Par.Inlines.Clear();
             Par.Inlines.Add(text);
             FontSizeD = size;
             LineSpacing = Convert.ToInt32(s[8]); 
             FlowDocReader.Zoom = Convert.ToInt32(s[7]);   //radi
+            HeightW = Convert.ToInt32(s[9]);
+            WidthW = Convert.ToInt32(s[10]);
 
             //komanda za sakrivanje menija
             hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
@@ -104,10 +105,8 @@ namespace Projekat
             CloseBook.Visibility = Visibility.Visible;
             MyMenu.Visibility = Visibility.Hidden;
             Settings.Visibility = Visibility.Visible;
-            //GoToPage.Visibility = Visibility.Visible;
+            NightMode.Visibility = Visibility.Visible;
 
-
-            
 
         }
 
@@ -128,7 +127,6 @@ namespace Projekat
                 //prikazi knjigu
                 Book.Visibility = Visibility.Visible;
                 filename = openFileDialog.FileName;
-                MessageBox.Show(filename);
                 string text = File.ReadAllText(filename, Encoding.UTF8);
 
                 RegexOptions options = RegexOptions.None;
@@ -140,16 +138,18 @@ namespace Projekat
                 Par.Inlines.Clear();
                 Par.Inlines.Add(text);
 
+                PageNum = 1;
 
-                //Doc.Background = Brushes.LightYellow;
-                //Doc.ColumnWidth = 1000;
-                //Doc.PagePadding = new Thickness(150, 50, 50, 50);
-                //Doc.TextAlignment = TextAlignment.Justify;
-                //Doc.FontStretch = FontStretches.UltraExpanded;
-                // Doc.LineHeight = 30;
+                FontSizeD = 12;
+                LineSpacing = 20;
+                ColorB = "LightYellow";
+                ColorF = "DarkSlateGray";
+                Font = "Times New Roman";
+                Margins = 12;
+                HeightW = 500;
+                WidthW = 800;
 
-
-
+                
                 //komanda za sakrivanje menija
                 hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
                 CommandBinding cb = new CommandBinding(hideMenu);
@@ -160,46 +160,45 @@ namespace Projekat
                 MyMenu.Visibility = Visibility.Hidden;
                 Settings.Visibility = Visibility.Visible;
                 NightMode.Visibility = Visibility.Visible;
-       
-                Page = "0";
-                this.FlowDocReader.GoToPage(1);
-                PageNum = 1;
-          
-                FontSizeD = 12;
-                LineSpacing = 20;
-                
             }
-            
+
+            Page = 0;
+            FlowDocReader.GoToPage(1);
+            gotofirstpage();
+
         }
 
 
         void Window_Closing(object sender, CancelEventArgs e)
         {
             if (Book.Visibility != Visibility.Hidden)
-            {
-                
+            {     
                 StreamWriter f = new StreamWriter("../../Save/save.txt");
                 f.WriteLine(filename.Split('\n')[0]);
                 //page
                 f.WriteLine(FlowDocReader.MasterPageNumber-1);
                 //font size
-                f.WriteLine(Doc.FontSize);
+                f.WriteLine(FontSizeD);
                 //font family
-                f.WriteLine(Doc.FontFamily);
+                f.WriteLine(Font);
                 //font color
-                f.WriteLine(Doc.Foreground);
+                f.WriteLine(ColorF);
                 //background color
-                f.WriteLine(FlowDocReader.Background);
+                f.WriteLine(ColorB);
                 //padding
-             //   MessageBox.Show(""+ Doc.PagePadding);
-                f.WriteLine(Doc.PagePadding);
+                //   MessageBox.Show(""+ Doc.PagePadding);
+                // f.WriteLine(Margins);
+                f.WriteLine("20");
                 //zoom
                 f.WriteLine(FlowDocReader.Zoom);
                 //space between lines
-                //MessageBox.Show(""+FlowDocument.LineHeightProperty.DefaultMetadata);
-                f.WriteLine(Doc.LineHeight);
-             
-                
+                f.WriteLine(LineSpacing);
+                //height
+                f.WriteLine(HeightW);
+                //width
+                f.WriteLine(WidthW);
+                //fullscreen          
+
                 f.Close();
             }
                 
@@ -222,6 +221,11 @@ namespace Projekat
 
             FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
 
+        }
+
+        private void gotofirstpage()
+        {
+            FlowDocReader.GoToPage(1);
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
@@ -280,6 +284,7 @@ namespace Projekat
             }
             else
             {
+                
                 WindowStyle = WindowStyle.None;
                 WindowState = WindowState.Maximized;
                 ResizeMode = ResizeMode.NoResize;
@@ -291,8 +296,12 @@ namespace Projekat
         private double _margins;
         private double _fontSize;
         private string _font;
-        private string _page;
+        private int _page;
         private int _pageNum;
+        private string _colorB;
+        private string _colorF;
+        private int _heightW;
+        private int _widthW;
 
         public double LineSpacing
         {
@@ -356,7 +365,7 @@ namespace Projekat
             }
         }
 
-        public string Page
+        public int Page
         {
             get
             {
@@ -368,6 +377,38 @@ namespace Projekat
                 {
                     _page = value;
                     OnPropertyChanged("Page");
+                }
+            }
+        }
+
+        public string ColorB
+        {
+            get
+            {
+                return _colorB;
+            }
+            set
+            {
+                if (value != _colorB)
+                {
+                    _colorB = value;
+                    OnPropertyChanged("ColorB");
+                }
+            }
+        }
+
+        public string ColorF
+        {
+            get
+            {
+                return _colorF;
+            }
+            set
+            {
+                if (value != _colorF)
+                {
+                    _colorF = value;
+                    OnPropertyChanged("ColorF");
                 }
             }
         }
@@ -384,6 +425,38 @@ namespace Projekat
                 {
                     _pageNum = value;
                     OnPropertyChanged("PageNum");
+                }
+            }
+        }
+
+        public int HeightW
+        {
+            get
+            {
+                return _heightW;
+            }
+            set
+            {
+                if (value != _heightW)
+                {
+                    _heightW = value;
+                    OnPropertyChanged("HeightW");
+                }
+            }
+        }
+
+        public int WidthW
+        {
+            get
+            {
+                return _widthW;
+            }
+            set
+            {
+                if (value != _widthW)
+                {
+                    _widthW = value;
+                    OnPropertyChanged("WidthW");
                 }
             }
         }
