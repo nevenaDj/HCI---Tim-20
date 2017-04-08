@@ -89,8 +89,8 @@
                                             DockPanel.Dock="Bottom">
                                             <Grid.ColumnDefinitions>
 
-                                                <ColumnDefinition Width="400" />
-                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="250" />
+                                                <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
 
@@ -267,7 +267,7 @@
                                             <StackPanel
                                                 Uid="StackPanel_2"
                                                 Grid.Column="2"
-                                                HorizontalAlignment="Right"
+                                                HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
                                                 Orientation="Horizontal">
                                                 <TextBlock

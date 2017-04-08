@@ -138,9 +138,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Save\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="books\A Study in Scarlet by Arthur Conan Doyle.txt" />
     <Resource Include="books\Anna Karenina by Lev Tolstoj.txt" />
@@ -158,6 +156,9 @@
     <Resource Include="books\The Time Machine by H. G. Wells.txt" />
     <Resource Include="books\The Works of Edgar Allan Poe - Volume 1 by Edgar Allan Poe.txt" />
     <Resource Include="books\War and Peace by Lev Tolstoj.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Save\recentFiles.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
