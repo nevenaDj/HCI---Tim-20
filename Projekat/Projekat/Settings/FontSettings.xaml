@@ -78,7 +78,7 @@
             Grid.ColumnSpan="2"
             Margin="23,27,0,23">
             <TextBlock
-                Width="14"
+                Width="20"
                 RenderTransformOrigin="1.718,0.552"
                 Text="{Binding Path=FontSizeD, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
             <Slider
@@ -111,7 +111,7 @@
             Grid.ColumnSpan="2"
             Margin="23,27,0,23">
             <TextBlock
-                Width="14"
+                Width="20"
                 RenderTransformOrigin="1.718,0.552"
                 Text="{Binding Path=LineSpacing, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
             <Slider
@@ -135,20 +135,20 @@
             Grid.ColumnSpan="2"
             Margin="23,27,0,23">
             <TextBlock
-                Width="14"
+                Width="20"
                 RenderTransformOrigin="1.718,0.552"
                 Text="{Binding Path=Margins, UpdateSourceTrigger=PropertyChanged}" />
             <Slider
                 x:Name="margin"
                 Width="235"
-                Maximum="200"
+                Maximum="300"
                 Minimum="10"
                 Value="{Binding Path=Margins, UpdateSourceTrigger=PropertyChanged}" />
         </DockPanel>
         <FlowDocumentScrollViewer
             Grid.Row="5"
             Grid.ColumnSpan="3"
-            Margin="63,0,-20,-63"
+            Margin="-20,0,-20,-63"
             IsToolBarVisible="False"
             ScrollViewer.HorizontalScrollBarVisibility="Hidden"
             ScrollViewer.VerticalScrollBarVisibility="Hidden">
@@ -157,7 +157,7 @@
                 FontFamily="{Binding Path=Font, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 FontSize="{Binding Path=FontSizeD, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 LineHeight="{Binding Path=LineSpacing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                PagePadding="{Binding Path=ChangeMargin, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                PagePadding="{Binding Path=ChangeMargins, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <Paragraph>
                     Ovo je primer.

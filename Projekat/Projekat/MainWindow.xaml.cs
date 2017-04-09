@@ -79,7 +79,7 @@ namespace Projekat
             text = text.Replace("-*-", "\r\n\r\n");
 
             int size = Convert.ToInt32(s[2]);   //radi                                          
-            Margins = s[6];
+            Margins = Convert.ToInt32( s[6]);
             Font = s[3];
             //font
             ColorB = s[5];
@@ -93,7 +93,7 @@ namespace Projekat
             FlowDocReader.Zoom = Convert.ToInt32(s[7]);   //radi
             HeightW = Convert.ToInt32(s[9]);
             WidthW = Convert.ToInt32(s[10]);
-
+            Margins = Convert.ToInt32(s[11]);
             //komanda za sakrivanje menija
             hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
             CommandBinding cb = new CommandBinding(hideMenu);
@@ -153,7 +153,7 @@ namespace Projekat
                 ColorB = "LightYellow";
                 ColorF = "DarkSlateGray";
                 Font = "Times New Roman";
-                Margins = "12";
+                Margins = 300;
                 HeightW = 500;
                 WidthW = 800;
 
@@ -203,7 +203,8 @@ namespace Projekat
                 f.WriteLine(HeightW);
                 //width
                 f.WriteLine(WidthW);
-                //fullscreen          
+                //fullscreen     
+                f.WriteLine(Margins);     
 
                 f.Close();
             }
@@ -294,9 +295,9 @@ namespace Projekat
         }
 
         #region NotifyProperties
-        private double _lineSpacing;
-        private string _margins;
-        private double _fontSize;
+        private int _lineSpacing;
+        private int _margins;
+        private int _fontSize;
         private string _font;
         private int _page;
         private int _pageNum;
@@ -304,8 +305,9 @@ namespace Projekat
         private string _colorF;
         private int _heightW;
         private int _widthW;
+        private Thickness _changeMargins;
 
-        public double LineSpacing
+        public int LineSpacing
         {
             get
             {
@@ -320,7 +322,7 @@ namespace Projekat
                 }
             }
         }
-        public string Margins
+        public int Margins
         {
             get
             {
@@ -331,11 +333,27 @@ namespace Projekat
                 if (value != _margins)
                 {
                     _margins = value;
+                    ChangeMargins = new Thickness(_margins, 10, _margins, 10);
                     OnPropertyChanged("Margins");
                 }
             }
         }
-        public double FontSizeD
+        public Thickness ChangeMargins
+        {
+            get
+            {
+                return _changeMargins;
+            }
+            set
+            {
+                if (value != _changeMargins)
+                {
+                    _changeMargins = value;
+                    OnPropertyChanged("ChangeMargins");
+                }
+            }
+        }
+        public int FontSizeD
         {
             get
             {
