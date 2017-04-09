@@ -24,4 +24,69 @@ LightYellow
 800
 30
 171
+$C:\Users\Sabinomi\Downloads\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+14
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+204
+$C:\Users\Sabinomi\Downloads\Around the World in Eighty Days by Jules Verne.txt
+291
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+292
+$C:\Users\Sabinomi\Downloads\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+204
+$C:\Users\Sabinomi\Downloads\Dracula by Bram Stoker.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+385
+$C:\Users\Sabinomi\Downloads\Around the World in Eighty Days by Jules Verne.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+270
 $

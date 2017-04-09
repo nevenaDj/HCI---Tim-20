@@ -56,8 +56,9 @@ namespace Projekat
                 {
                     HeightW = 500;
                     WidthW = 800;
+                    creating_Recent_Files();
                     previewOpen(fileContents);
-                 
+               
                 }
 
             }
@@ -65,12 +66,15 @@ namespace Projekat
 
 
             this.DataContext = this;
+
         }
 
+        private string[] recentFiles;
         private void open(string fileContents)
         {
             string[] s = fileContents.Split('\n');
             Book.Visibility = Visibility.Visible;
+            Not_Book.Visibility = Visibility.Hidden;
 
             //  filename = s[0].Replace('\\','/');
             filename = s[0];
@@ -97,6 +101,7 @@ namespace Projekat
             Page = Convert.ToInt32(s[1]);  //okej -> samo ne radi jump
             Par.Inlines.Clear();
             Par.Inlines.Add(text);
+            
             FontSizeD = size;
             LineSpacing = Convert.ToInt32(s[8]);
             FlowDocReader.Zoom = Convert.ToInt32(s[7]);   //radi
@@ -123,6 +128,7 @@ namespace Projekat
 
         private void previewOpen(string fileContents)
         {
+            
             string[] s = fileContents.Split('\n');
             
 
@@ -148,10 +154,13 @@ namespace Projekat
             //font
             ColorB = s[5];
             ColorF = s[4];
+            
+           
 
             Page = Convert.ToInt32(s[1]);  //okej -> samo ne radi jump
             Par.Inlines.Clear();
             Par.Inlines.Add(text);
+            
             FontSizeD = size;
             LineSpacing = Convert.ToInt32(s[8]);
             FlowDocReader.Zoom = Convert.ToInt32(s[7]);   //radi
@@ -311,6 +320,7 @@ namespace Projekat
         {
             save_To_Recent_Files();
             Book.Visibility = Visibility.Hidden;
+            Not_Book.Visibility = Visibility.Hidden;
             CloseBook.Visibility = Visibility.Hidden;
             MyMenu.Visibility = Visibility.Visible;
             Settings.Visibility = Visibility.Hidden;
@@ -323,9 +333,151 @@ namespace Projekat
 
         private void GoToPage_Click(object sender, RoutedEventArgs e)
         {
-
             FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+        }
 
+        private void B1_Click(object sender, RoutedEventArgs e)
+        {
+            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+        }
+
+        private void B2_Click(object sender, RoutedEventArgs e)
+        {
+            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+        }
+
+        private void B3_Click(object sender, RoutedEventArgs e)
+        {
+            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+        }
+
+        private void B4_Click(object sender, RoutedEventArgs e)
+        {
+            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+        }
+
+        private void B5_Click(object sender, RoutedEventArgs e)
+        {
+            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+        }
+
+        private void B6_Click(object sender, RoutedEventArgs e)
+        {
+            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+        }
+
+        private void B7_Click(object sender, RoutedEventArgs e)
+        {
+            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+        }
+
+        private void B8_Click(object sender, RoutedEventArgs e)
+        {
+            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+        }
+        private void B9_Click(object sender, RoutedEventArgs e)
+        {
+            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+        }
+
+        private void B10_Click(object sender, RoutedEventArgs e)
+        {
+            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+        }
+
+       
+
+        private void creating_Recent_Files()
+        {
+            FileStream f = new FileStream("../../Save/recentFiles.txt", FileMode.OpenOrCreate);
+            f.Close();
+
+            string text = File.ReadAllText("../../Save/recentFiles.txt");
+            recentFiles = text.Split('$');
+                if (recentFiles.Length== 0)
+            {
+
+            }
+                else if (recentFiles.Length == 1)
+            {
+                button1.Visibility = Visibility.Visible;
+            }/*
+                case 1:
+                    button1.Visibility = Visibility.Visible;
+                    break;
+                case 2:
+                    button1.Visibility = Visibility.Visible;
+                    button2.Visibility = Visibility.Visible;
+                    break;
+                case 3:
+                    button3.Visibility = Visibility.Visible;
+                    button1.Visibility = Visibility.Visible;
+                    button2.Visibility = Visibility.Visible;
+                    break;
+                case 4:
+                    button4.Visibility = Visibility.Visible;
+                    button3.Visibility = Visibility.Visible;
+                    button1.Visibility = Visibility.Visible;
+                    button2.Visibility = Visibility.Visible;
+                    break;
+                case 5:
+                    button5.Visibility = Visibility.Visible;
+                    button4.Visibility = Visibility.Visible;
+                    button3.Visibility = Visibility.Visible;
+                    button1.Visibility = Visibility.Visible;
+                    button2.Visibility = Visibility.Visible;
+                    break;
+                case 6:
+                    button6.Visibility = Visibility.Visible;
+                    button5.Visibility = Visibility.Visible;
+                    button4.Visibility = Visibility.Visible;
+                    button3.Visibility = Visibility.Visible;
+                    button1.Visibility = Visibility.Visible;
+                    button2.Visibility = Visibility.Visible;
+                    break;
+                case 7:
+                    button7.Visibility = Visibility.Visible;
+                    button6.Visibility = Visibility.Visible;
+                    button5.Visibility = Visibility.Visible;
+                    button4.Visibility = Visibility.Visible;
+                    button3.Visibility = Visibility.Visible;
+                    button1.Visibility = Visibility.Visible;
+                    button2.Visibility = Visibility.Visible;
+                    break;
+                case 8:
+                    button8.Visibility = Visibility.Visible;
+                    button7.Visibility = Visibility.Visible;
+                    button6.Visibility = Visibility.Visible;
+                    button5.Visibility = Visibility.Visible;
+                    button4.Visibility = Visibility.Visible;
+                    button3.Visibility = Visibility.Visible;
+                    button1.Visibility = Visibility.Visible;
+                    button2.Visibility = Visibility.Visible;
+                    break;
+                case 9:
+                    button9.Visibility = Visibility.Visible;
+                    button8.Visibility = Visibility.Visible;
+                    button7.Visibility = Visibility.Visible;
+                    button6.Visibility = Visibility.Visible;
+                    button5.Visibility = Visibility.Visible;
+                    button4.Visibility = Visibility.Visible;
+                    button3.Visibility = Visibility.Visible;
+                    button1.Visibility = Visibility.Visible;
+                    button2.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    button10.Visibility = Visibility.Visible;
+                    button9.Visibility = Visibility.Visible;
+                    button8.Visibility = Visibility.Visible;
+                    button7.Visibility = Visibility.Visible;
+                    button6.Visibility = Visibility.Visible;
+                    button5.Visibility = Visibility.Visible;
+                    button4.Visibility = Visibility.Visible;
+                    button3.Visibility = Visibility.Visible;
+                    button1.Visibility = Visibility.Visible;
+                    button2.Visibility = Visibility.Visible;
+                    break;
+            }*/
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
@@ -416,7 +568,17 @@ namespace Projekat
         private int _widthW;
         private Thickness _changeMargins;
         private string _theme;
-       
+        private string _b1;
+        private string _b2;
+        private string _b3;
+        private string _b4;
+        private string _b5;
+        private string _b6;
+        private string _b7;
+        private string _b8;
+        private string _b9;
+        private string _b10;
+
 
         public int LineSpacing
         {
@@ -527,6 +689,167 @@ namespace Projekat
                 }
             }
         }
+
+        public string B1
+        {
+            get
+            {
+                return _b1;
+            }
+            set
+            {
+                if (value != _b1)
+                {
+                    _b1 = value;
+                    OnPropertyChanged("B1");
+                }
+            }
+        }
+
+        public string B2
+        {
+            get
+            {
+                return _b2;
+            }
+            set
+            {
+                if (value != _b2)
+                {
+                    _b2 = value;
+                    OnPropertyChanged("B2");
+                }
+            }
+        }
+
+        public string B3
+        {
+            get
+            {
+                return _b3;
+            }
+            set
+            {
+                if (value != _b3)
+                {
+                    _b3 = value;
+                    OnPropertyChanged("B3");
+                }
+            }
+        }
+
+        public string B4
+        {
+            get
+            {
+                return _b4;
+            }
+            set
+            {
+                if (value != _b4)
+                {
+                    _b4 = value;
+                    OnPropertyChanged("B4");
+                }
+            }
+        }
+
+        public string B5
+        {
+            get
+            {
+                return _b5;
+            }
+            set
+            {
+                if (value != _b5)
+                {
+                    _b5 = value;
+                    OnPropertyChanged("B5");
+                }
+            }
+        }
+
+        public string B6
+        {
+            get
+            {
+                return _b6;
+            }
+            set
+            {
+                if (value != _b6)
+                {
+                    _b6 = value;
+                    OnPropertyChanged("B6");
+                }
+            }
+        }
+
+        public string B7
+        {
+            get
+            {
+                return _b7;
+            }
+            set
+            {
+                if (value != _b7)
+                {
+                    _b7 = value;
+                    OnPropertyChanged("B7");
+                }
+            }
+        }
+
+        public string B8
+        {
+            get
+            {
+                return _b8;
+            }
+            set
+            {
+                if (value != _b8)
+                {
+                    _b8 = value;
+                    OnPropertyChanged("B8");
+                }
+            }
+        }
+
+        public string B9
+        {
+            get
+            {
+                return _b9;
+            }
+            set
+            {
+                if (value != _b9)
+                {
+                    _b9 = value;
+                    OnPropertyChanged("B9");
+                }
+            }
+        }
+
+        public string B10
+        {
+            get
+            {
+                return _b10;
+            }
+            set
+            {
+                if (value != _b10)
+                {
+                    _b10 = value;
+                    OnPropertyChanged("B10");
+                }
+            }
+        }
+
 
         public int Page
         {
