@@ -73,8 +73,7 @@ namespace Projekat
         private void open(string fileContents)
         {
             string[] s = fileContents.Split('\n');
-            Book.Visibility = Visibility.Collapsed;
-            Not_Book.Visibility = Visibility.Hidden;
+          
 
             //  filename = s[0].Replace('\\','/');
             filename = s[0];
@@ -107,6 +106,9 @@ namespace Projekat
             FlowDocReader.Zoom = Convert.ToInt32(s[7]);   //radi
             HeightW = Convert.ToInt32(s[9]);
             WidthW = Convert.ToInt32(s[10]);
+            if (Convert.ToInt32(s[11]) == 0){
+                WindowState = WindowState.Maximized;
+            }
             Margins = Convert.ToInt32(s[6]);
             highlight();
             //komanda za sakrivanje menija
@@ -117,11 +119,13 @@ namespace Projekat
 
             PageNum = Convert.ToInt32(Page) + 1;
 
+            Book.Visibility = Visibility.Visible;
             CloseBook.Visibility = Visibility.Visible;
             MyMenu.Visibility = Visibility.Hidden;
             Settings.Visibility = Visibility.Visible;
             NightMode.Visibility = Visibility.Visible;
             Highlight.Visibility = Visibility.Visible;
+            Not_Book.Visibility = Visibility.Hidden;
 
 
         }
@@ -198,7 +202,7 @@ namespace Projekat
             {
               //  Page = 0;
                 //prikazi knjigu
-                Book.Visibility = Visibility.Visible;
+               // Book.Visibility = Visibility.Visible;
                 filename = openFileDialog.FileName;
                 string text = File.ReadAllText(filename, Encoding.UTF8);
 
@@ -235,11 +239,13 @@ namespace Projekat
                 cb.Executed += new ExecutedRoutedEventHandler(HideHandler);
                 this.CommandBindings.Add(cb);
 
+                Book.Visibility = Visibility.Visible;
                 CloseBook.Visibility = Visibility.Visible;
                 MyMenu.Visibility = Visibility.Hidden;
                 Settings.Visibility = Visibility.Visible;
                 NightMode.Visibility = Visibility.Visible;
                 Highlight.Visibility = Visibility.Visible;
+                Not_Book.Visibility = Visibility.Hidden;
                 //Page = 0;
                 //FlowDocReader.GoToPage(1);
             }
@@ -281,7 +287,7 @@ namespace Projekat
 
         void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (Book.Visibility != Visibility.Hidden)
+            if (Book.Visibility != Visibility.Collapsed)
             {
                 StreamWriter f = new StreamWriter("../../Save/save.txt");
                 f.WriteLine(filename.Split('\n')[0]);
@@ -307,6 +313,14 @@ namespace Projekat
                 f.WriteLine(HeightW);
                 //width
                 f.WriteLine(WidthW); 
+
+                if (WindowState == WindowState.Maximized)
+                {
+                    f.WriteLine(0);
+                }else
+                {
+                    f.WriteLine(1);
+                }
                     
 
                 f.Close();
@@ -320,7 +334,7 @@ namespace Projekat
         {
             save_To_Recent_Files();
             Book.Visibility = Visibility.Collapsed;
-            Not_Book.Visibility = Visibility.Hidden;
+            Not_Book.Visibility = Visibility.Visible;
             CloseBook.Visibility = Visibility.Hidden;
             MyMenu.Visibility = Visibility.Visible;
             Settings.Visibility = Visibility.Hidden;
