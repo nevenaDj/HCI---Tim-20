@@ -952,7 +952,7 @@
                     x:Name="button1"
                     Grid.Column="0"
                     Grid.Row="0"
-                    Visibility="Visible"
+                    Visibility="Hidden"
                     HorizontalContentAlignment="Left"
                     Content="{Binding B1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B1_Click"

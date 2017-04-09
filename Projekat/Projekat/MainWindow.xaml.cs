@@ -200,9 +200,9 @@ namespace Projekat
 
             if (openFileDialog.ShowDialog() == true)
             {
-              //  Page = 0;
+                //  Page = 0;
                 //prikazi knjigu
-               // Book.Visibility = Visibility.Visible;
+                // Book.Visibility = Visibility.Visible;
                 filename = openFileDialog.FileName;
                 string text = File.ReadAllText(filename, Encoding.UTF8);
 
@@ -215,22 +215,59 @@ namespace Projekat
                 Par.Inlines.Clear();
                 Par.Inlines.Add(text);
 
-                PageNum = 1;
-                //Page = 1;
-                
-                
-                FlowDocReader.GoToPage(FlowDocReader.PageCount);
-                FlowDocReader.GoToPage(1);
+                FileStream f = new FileStream("../../Save/recentFiles.txt", FileMode.OpenOrCreate);
+                f.Close();
 
-                //
-                FontSizeD = 12;
-                LineSpacing = 20;
-                ColorB = "LightYellow";
-                ColorF = "DarkSlateGray";
-                Font = "Times New Roman";
-                Margins = 30;
-                HeightW = 500;
-                WidthW = 800;
+                string recentText = File.ReadAllText("../../Save/recentFiles.txt");
+
+               
+                recentFiles = recentText.Split('$');
+
+                int x = 0;
+                foreach (string book in recentFiles)
+                {
+                    string[] data = book.Split('\n');
+                    if (data[0]==filename)
+                    {
+                        x++;
+                        int size = Convert.ToInt32(data[2]);   //radi                                          
+                        Font = data[3];
+                        //font
+                        ColorB = data[5];
+                        ColorF = data[4];
+
+                        Page = Convert.ToInt32(data[1]);  //okej -> samo ne radi jump
+              
+
+                        FontSizeD = size;
+                        LineSpacing = Convert.ToInt32(data[8]);
+                        FlowDocReader.Zoom = Convert.ToInt32(data[7]);   //radi
+                        HeightW = Convert.ToInt32(data[9]);
+                        WidthW = Convert.ToInt32(data[10]);
+                        if (Convert.ToInt32(data[11]) == 0)
+                        {
+                            WindowState = WindowState.Maximized;
+                        }
+                        Margins = Convert.ToInt32(data[6]);
+                        //FlowDocReader.GoToPage(Convert.ToInt32(Page));
+                    }
+                }
+                    
+                if (x==0)
+                { 
+                    PageNum = 1;
+                    FlowDocReader.GoToPage(1);
+
+                    FontSizeD = 12;
+                    LineSpacing = 20;
+                    ColorB = "LightYellow";
+                    ColorF = "DarkSlateGray";
+                    Font = "Times New Roman";
+                    Margins = 30;
+                    HeightW = 500;
+                    WidthW = 800;
+                }
+
                 highlight();
 
                 //komanda za sakrivanje menija
@@ -417,8 +454,8 @@ namespace Projekat
         {
             FileStream f = new FileStream("../../Save/recentFiles.txt", FileMode.OpenOrCreate);
             f.Close();
-
             string text = File.ReadAllText("../../Save/recentFiles.txt");
+
             recentFiles = text.Split('$');
             int size = recentFiles.Length;
 
