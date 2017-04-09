@@ -69,8 +69,8 @@
             Margin="67,27,69,24"
             VerticalAlignment="Center"
             IsEditable="False"
-            ItemsSource="{Binding Path=Theme}"
-            SelectedItem="{Binding Path=Font, UpdateSourceTrigger=PropertyChanged}" />
+            ItemsSource="{Binding Path=Themes}"
+            SelectedItem="{Binding Path=Theme, UpdateSourceTrigger=PropertyChanged}" />
 
         <DockPanel
             Grid.Row="2"

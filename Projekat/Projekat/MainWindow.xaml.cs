@@ -297,10 +297,10 @@ namespace Projekat
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
             this.DataContext = this;
-            Theme = new ObservableCollection<string>();
-            Theme.Add("Black on white");
-            Theme.Add("Sepia");
-            Theme.Add("Night");
+            Themes = new ObservableCollection<string>();
+            Themes.Add("Black on white");
+            Themes.Add("Sepia");
+            Themes.Add("Night");
 
             Fonts = new ObservableCollection<string>();
 
@@ -319,6 +319,16 @@ namespace Projekat
         private void NightMode_Click(object sender, RoutedEventArgs e)
         {
 
+            if(ColorB == "Black")
+            {
+                ColorB = "LightYellow";
+                ColorF = "DarkSlateGray";
+            }
+            else
+            {
+                ColorB = "Black";
+                ColorF = "White";
+            }
 
 
         }
@@ -371,6 +381,8 @@ namespace Projekat
         private int _heightW;
         private int _widthW;
         private Thickness _changeMargins;
+        private string _theme;
+       
 
         public int LineSpacing
         {
@@ -418,6 +430,38 @@ namespace Projekat
                 }
             }
         }
+        public string Theme
+        {
+            get
+            {
+                return _theme;
+            }
+            set
+            {
+                if (value == "Sepia")
+                {
+                    ColorB = "LightYellow";
+                    ColorF = "DarkSlateGray";
+                    _theme = value;
+                    OnPropertyChanged("Theme");
+                }
+                else if(value == "Black on white")
+                {
+                    ColorB = "White";
+                    ColorF = "Black";
+                    _theme = value;
+                    OnPropertyChanged("Theme");
+                }
+                else if(value == "Night")
+                {
+                    ColorB = "Black";
+                    ColorF = "White";
+                    _theme = value;
+                    OnPropertyChanged("Theme");
+                }
+            }
+        }
+
         public int FontSizeD
         {
             get
@@ -546,7 +590,7 @@ namespace Projekat
             }
         }
 
-        public ObservableCollection<string> Theme
+        public ObservableCollection<string> Themes
         {
             get;
             set;

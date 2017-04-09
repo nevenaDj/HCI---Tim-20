@@ -1,12 +1,12 @@
-C:\Users\Sabinomi\Downloads\A Study in Scarlet by Arthur Conan Doyle.txt
-8
+E:\Faks\3Godina\HCI\HCI---Tim-20\Projekat\Projekat\books\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+62
 12
-Times New Roman
-DarkSlateGray
-LightYellow
+Times New Roman
+White
+Black
 20
 100
 20
 500
 800
-30
+300
