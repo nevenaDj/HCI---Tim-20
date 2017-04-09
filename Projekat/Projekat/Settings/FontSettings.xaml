@@ -70,7 +70,7 @@
             VerticalAlignment="Center"
             IsEditable="False"
             ItemsSource="{Binding Path=Themes}"
-            SelectedItem="{Binding Path=Theme, UpdateSourceTrigger=PropertyChanged}" />
+            SelectedItem="{Binding Path=Theme,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <DockPanel
             Grid.Row="2"
@@ -153,7 +153,8 @@
             ScrollViewer.HorizontalScrollBarVisibility="Hidden"
             ScrollViewer.VerticalScrollBarVisibility="Hidden">
             <FlowDocument
-                Background="LightBlue"
+                Background="{Binding Path=ColorB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Foreground="{Binding Path=ColorF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 FontFamily="{Binding Path=Font, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 FontSize="{Binding Path=FontSizeD, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 LineHeight="{Binding Path=LineSpacing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

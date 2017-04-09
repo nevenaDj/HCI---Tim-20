@@ -665,7 +665,7 @@ namespace Projekat
 
             f.Close();
 
-            if (ColorB == "Black")
+            if (ColorB == "#1d1d1d")
             {
 
                 textRange.ApplyPropertyValue(TextElement.BackgroundProperty, new SolidColorBrush(Colors.White));
