@@ -104,6 +104,7 @@ namespace Projekat
             HeightW = Convert.ToInt32(s[9]);
             WidthW = Convert.ToInt32(s[10]);
             Margins = Convert.ToInt32(s[11]);
+            highlight();
             //komanda za sakrivanje menija
             hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
             CommandBinding cb = new CommandBinding(hideMenu);
@@ -116,6 +117,7 @@ namespace Projekat
             MyMenu.Visibility = Visibility.Hidden;
             Settings.Visibility = Visibility.Visible;
             NightMode.Visibility = Visibility.Visible;
+            Highlight.Visibility = Visibility.Visible;
 
 
         }
@@ -157,6 +159,7 @@ namespace Projekat
             HeightW = Convert.ToInt32(s[9]);
             WidthW = Convert.ToInt32(s[10]);
             Margins = Convert.ToInt32(s[11]);
+            
             //komanda za sakrivanje menija
             hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
             CommandBinding cb = new CommandBinding(hideMenu);
@@ -210,10 +213,10 @@ namespace Projekat
                 ColorB = "LightYellow";
                 ColorF = "DarkSlateGray";
                 Font = "Times New Roman";
-                Margins = 300;
+                Margins = 30;
                 HeightW = 500;
                 WidthW = 800;
-
+                highlight();
 
                 //komanda za sakrivanje menija
                 hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
@@ -225,6 +228,7 @@ namespace Projekat
                 MyMenu.Visibility = Visibility.Hidden;
                 Settings.Visibility = Visibility.Visible;
                 NightMode.Visibility = Visibility.Visible;
+                Highlight.Visibility = Visibility.Visible;
                 //Page = 0;
                 //FlowDocReader.GoToPage(1);
             }
@@ -276,6 +280,8 @@ namespace Projekat
             CloseBook.Visibility = Visibility.Hidden;
             MyMenu.Visibility = Visibility.Visible;
             Settings.Visibility = Visibility.Hidden;
+            Highlight.Visibility = Visibility.Hidden;
+            NightMode.Visibility = Visibility.Hidden;
             Page = 0;
             //isbrisi save.txt
             FileStream f = new FileStream("../../Save/save.txt", FileMode.Create);
@@ -350,6 +356,8 @@ namespace Projekat
                 ResizeMode = ResizeMode.NoResize;
             }
         }
+
+
 
         #region NotifyProperties
         private int _lineSpacing;
@@ -563,6 +571,70 @@ namespace Projekat
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
-  
-    }
+        private void highlight()
+        {
+            FileStream f = new FileStream("../../Save/highlight.txt", FileMode.OpenOrCreate);
+            f.Close();
+            string text = File.ReadAllText(@"../../Save/highlight.txt");
+
+            RegexOptions options = RegexOptions.None;
+            Regex regex = new Regex("[\r\n]{3,}", options);
+            text = regex.Replace(text, "-*-");
+            text = text.Replace("\r\n", "\n");
+            text = text.Replace("-*-", "\r\n\r\n");
+
+            string[] highlights = text.Split('$');
+
+
+            foreach (string h in highlights)
+            {
+                string[] texts = h.Split('\n');
+
+                if (texts[0] == filename)
+                {
+                    var start = Doc.ContentStart;
+                    var startPos = start.GetPositionAtOffset(Convert.ToInt32(texts[1]));
+                    var endPos = start.GetPositionAtOffset(Convert.ToInt32(texts[2]));
+                    var textRange = new TextRange(startPos, endPos);
+                    textRange.ApplyPropertyValue(TextElement.BackgroundProperty, new SolidColorBrush(Colors.Green));
+                    textRange.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.White));
+
+                }
+            }
+
+
+        }
+
+        private void Highlight_Click(object sender, RoutedEventArgs e)
+        {
+            var textRange = FlowDocReader.Selection;
+
+            TextPointer tp = FlowDocReader.Selection.Start;
+            TextPointer tp2 = FlowDocReader.Selection.End;
+
+            StreamWriter f = new StreamWriter("../../Save/highlight.txt", true);
+            f.WriteLine(filename.Split('\n')[0]);
+            f.WriteLine(Doc.ContentStart.GetOffsetToPosition(tp));
+            f.WriteLine(Doc.ContentStart.GetOffsetToPosition(tp2));
+            f.Write("$");
+            //fullscreen          
+
+            f.Close();
+
+            if (ColorB == "Black")
+            {
+
+                textRange.ApplyPropertyValue(TextElement.BackgroundProperty, new SolidColorBrush(Colors.White));
+                textRange.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Gray));
+            }
+            else
+            {
+                textRange.ApplyPropertyValue(TextElement.BackgroundProperty, new SolidColorBrush(Colors.Green));
+                textRange.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.White));
+            }
+
+            //MessageBox.Show(""+textRange.Text);
+
+        }
+}
 }

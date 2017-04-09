@@ -1,0 +1,12 @@
+C:\Users\Sabinomi\Downloads\A Study in Scarlet by Arthur Conan Doyle.txt
+8
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30

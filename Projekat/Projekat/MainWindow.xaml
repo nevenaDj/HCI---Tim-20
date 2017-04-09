@@ -47,6 +47,12 @@
                 TextBlock.FontSize="16"
                 Visibility="Hidden" />
             <MenuItem
+                x:Name="Highlight"
+                Click="Highlight_Click"
+                Header="_Highlight"
+                TextBlock.FontSize="16"
+                Visibility="Hidden" />    
+            <MenuItem
                 x:Name="CloseBook"
                 HorizontalAlignment="Right"
                 Click="CloseBook_Click"
