@@ -283,4 +283,524 @@ LightYellow
 800
 30
 79
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\A Study in Scarlet by Arthur Conan Doyle.txt
+24
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+169
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\A Study in Scarlet by Arthur Conan Doyle.txt
+23
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+169
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Around the World in Eighty Days by Jules Verne.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+292
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Around the World in Eighty Days by Jules Verne.txt
+49
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+292
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dracula by Bram Stoker.txt
+21
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+213
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+101
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+102
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+101
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+102
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\A Study in Scarlet by Arthur Conan Doyle.txt
+-56
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+78
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dracula by Bram Stoker.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+227
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dracula by Bram Stoker.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+227
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\A Study in Scarlet by Arthur Conan Doyle.txt
+45
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+78
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+102
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+101
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+102
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Anna Karenina by Lev Tolstoj.txt
+571
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+982
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\A Study in Scarlet by Arthur Conan Doyle.txt
+571
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+171
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Irish Fairy Tales.txt
+318
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+319
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Around the World in Eighty Days by Jules Verne.txt
+571
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+292
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Around the World in Eighty Days by Jules Verne.txt
+291
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+292
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Anna Karenina by Lev Tolstoj.txt
+571
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+712
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dracula by Bram Stoker.txt
+513
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+514
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\A Study in Scarlet by Arthur Conan Doyle.txt
+-512
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+171
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Around the World in Eighty Days by Jules Verne.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+292
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+1
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+204
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Around the World in Eighty Days by Jules Verne.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+292
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Around the World in Eighty Days by Jules Verne.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+292
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Around the World in Eighty Days by Jules Verne.txt
+291
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+292
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+204
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Anna Karenina by Lev Tolstoj.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+1359
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Anna Karenina by Lev Tolstoj.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+637
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Irish Fairy Tales.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+162
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Anna Karenina by Lev Tolstoj.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+637
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+144
+108
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Around the World in Eighty Days by Jules Verne.txt
+24
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+292
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Irish Fairy Tales.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+319
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+204
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Anna Karenina by Lev Tolstoj.txt
+249
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+1359
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+200
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+201
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+200
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+201
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+200
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+201
+$C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+200
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+201
 $

@@ -73,11 +73,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Settings\DoubleToTextConverter.cs" />
     <Compile Include="Settings\FontSettings.xaml.cs">
       <DependentUpon>FontSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings\MarginConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
