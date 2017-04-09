@@ -75,18 +75,17 @@ LightYellow
 500
 800
 30
-385
-$C:\Users\Sabinomi\Downloads\Around the World in Eighty Days by Jules Verne.txt
-0
+385../../Save/A Study in Scarlet by Arthur Conan Doyle.txt
+-1
 12
-Times New Roman
-DarkSlateGray
-LightYellow
+Times New Roman
+DarkSlateGray
+LightYellow
 20
 100
 20
 500
 800
-30
-270
+300
+147
 $

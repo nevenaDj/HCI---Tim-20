@@ -73,7 +73,7 @@ namespace Projekat
         private void open(string fileContents)
         {
             string[] s = fileContents.Split('\n');
-            Book.Visibility = Visibility.Visible;
+            Book.Visibility = Visibility.Collapsed;
             Not_Book.Visibility = Visibility.Hidden;
 
             //  filename = s[0].Replace('\\','/');
@@ -183,7 +183,7 @@ namespace Projekat
 
         private void OpenBook_Click(object sender, RoutedEventArgs e)
         {
-            if (Book.Visibility != Visibility.Hidden)
+            if (Book.Visibility != Visibility.Collapsed)
             {
                 save_To_Recent_Files();
             }
@@ -319,7 +319,7 @@ namespace Projekat
         private void CloseBook_Click(object sender, RoutedEventArgs e)
         {
             save_To_Recent_Files();
-            Book.Visibility = Visibility.Hidden;
+            Book.Visibility = Visibility.Collapsed;
             Not_Book.Visibility = Visibility.Hidden;
             CloseBook.Visibility = Visibility.Hidden;
             MyMenu.Visibility = Visibility.Visible;
@@ -394,90 +394,83 @@ namespace Projekat
 
             string text = File.ReadAllText("../../Save/recentFiles.txt");
             recentFiles = text.Split('$');
-                if (recentFiles.Length== 0)
-            {
+            int size = recentFiles.Length;
 
-            }
-                else if (recentFiles.Length == 1)
+            if (recentFiles.Length != 0)
             {
-                button1.Visibility = Visibility.Visible;
-            }/*
-                case 1:
+                if (recentFiles.Length > 1)
+                {
                     button1.Visibility = Visibility.Visible;
-                    break;
-                case 2:
-                    button1.Visibility = Visibility.Visible;
+                    string[] data = recentFiles[size-2].Split('\n');
+                    double percentage = (Convert.ToDouble(data[1])+1) / Convert.ToDouble(data[12]) * 100;
+                    B1 = data[0] + "\n" + percentage + "%    - > Page: "+ data[1]+", Count: "+ data[12];
+                }
+                if (recentFiles.Length > 2)
+                {
                     button2.Visibility = Visibility.Visible;
-                    break;
-                case 3:
+                    string[] data = recentFiles[size - 3].Split('\n');
+                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
+                    B2 = data[0] + "\n" + percentage + "%";
+                }
+                if (recentFiles.Length > 3)
+                {
                     button3.Visibility = Visibility.Visible;
-                    button1.Visibility = Visibility.Visible;
-                    button2.Visibility = Visibility.Visible;
-                    break;
-                case 4:
+                    string[] data = recentFiles[size - 4].Split('\n');
+                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
+                    B3 = data[0] + "\n" + percentage + "%";
+                }
+                if (recentFiles.Length > 4)
+                {
                     button4.Visibility = Visibility.Visible;
-                    button3.Visibility = Visibility.Visible;
-                    button1.Visibility = Visibility.Visible;
-                    button2.Visibility = Visibility.Visible;
-                    break;
-                case 5:
+                    string[] data = recentFiles[size - 5].Split('\n');
+                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
+                    B4 = data[0] + "\n" + percentage + "%";
+                }
+                if (recentFiles.Length > 5)
+                {
                     button5.Visibility = Visibility.Visible;
-                    button4.Visibility = Visibility.Visible;
-                    button3.Visibility = Visibility.Visible;
-                    button1.Visibility = Visibility.Visible;
-                    button2.Visibility = Visibility.Visible;
-                    break;
-                case 6:
+                    string[] data = recentFiles[size - 6].Split('\n');
+                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
+                    B5 = data[0] + "\n" + percentage + "%";
+                }
+                if (recentFiles.Length > 6)
+                {
                     button6.Visibility = Visibility.Visible;
-                    button5.Visibility = Visibility.Visible;
-                    button4.Visibility = Visibility.Visible;
-                    button3.Visibility = Visibility.Visible;
-                    button1.Visibility = Visibility.Visible;
-                    button2.Visibility = Visibility.Visible;
-                    break;
-                case 7:
+                    string[] data = recentFiles[size - 7].Split('\n');
+                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
+                    B6 = data[0] + "\n" + percentage + "%";
+                }
+                if (recentFiles.Length > 7)
+                {
                     button7.Visibility = Visibility.Visible;
-                    button6.Visibility = Visibility.Visible;
-                    button5.Visibility = Visibility.Visible;
-                    button4.Visibility = Visibility.Visible;
-                    button3.Visibility = Visibility.Visible;
-                    button1.Visibility = Visibility.Visible;
-                    button2.Visibility = Visibility.Visible;
-                    break;
-                case 8:
+                    string[] data = recentFiles[size - 8].Split('\n');
+                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
+                    B7 = data[0] + "\n" + percentage + "%";
+                }
+                if (recentFiles.Length > 8)
+                {
                     button8.Visibility = Visibility.Visible;
-                    button7.Visibility = Visibility.Visible;
-                    button6.Visibility = Visibility.Visible;
-                    button5.Visibility = Visibility.Visible;
-                    button4.Visibility = Visibility.Visible;
-                    button3.Visibility = Visibility.Visible;
-                    button1.Visibility = Visibility.Visible;
-                    button2.Visibility = Visibility.Visible;
-                    break;
-                case 9:
+                    string[] data = recentFiles[size - 9].Split('\n');
+                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
+                    B8 = data[0] + "\n" + percentage + "%";
+                }
+                if (recentFiles.Length > 9)
+                {
                     button9.Visibility = Visibility.Visible;
-                    button8.Visibility = Visibility.Visible;
-                    button7.Visibility = Visibility.Visible;
-                    button6.Visibility = Visibility.Visible;
-                    button5.Visibility = Visibility.Visible;
-                    button4.Visibility = Visibility.Visible;
-                    button3.Visibility = Visibility.Visible;
-                    button1.Visibility = Visibility.Visible;
-                    button2.Visibility = Visibility.Visible;
-                    break;
-                default:
+                    string[] data = recentFiles[size - 10].Split('\n');
+                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
+                    B9 = data[0] + "\n" + percentage + "%";
+                }
+                if (recentFiles.Length > 10)
+                {
                     button10.Visibility = Visibility.Visible;
-                    button9.Visibility = Visibility.Visible;
-                    button8.Visibility = Visibility.Visible;
-                    button7.Visibility = Visibility.Visible;
-                    button6.Visibility = Visibility.Visible;
-                    button5.Visibility = Visibility.Visible;
-                    button4.Visibility = Visibility.Visible;
-                    button3.Visibility = Visibility.Visible;
-                    button1.Visibility = Visibility.Visible;
-                    button2.Visibility = Visibility.Visible;
-                    break;
-            }*/
+                    string[] data = recentFiles[size-11].Split('\n');
+                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
+                    B10 = data[0] + "\n" + percentage + "%";
+                }
+            }
+            
+
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)

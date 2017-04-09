@@ -66,7 +66,7 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             DockPanel.Dock="Bottom"
-            Visibility="Hidden">
+            Visibility="Collapsed">
             <FlowDocumentPageViewer
                 x:Name="FlowDocReader"
                 Padding="20,0,20,0"
@@ -953,6 +953,7 @@
                     Grid.Column="0"
                     Grid.Row="0"
                     Visibility="Visible"
+                    HorizontalContentAlignment="Left"
                     Content="{Binding B1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B1_Click"
                     ></Button>
@@ -961,6 +962,7 @@
                     Grid.Column="0"
                     Grid.Row="1"
                     Visibility="Hidden"
+                    HorizontalContentAlignment="Left"
                     Content="{Binding B2, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B2_Click"
                     ></Button>
@@ -969,6 +971,7 @@
                     Grid.Column="0"
                     Grid.Row="2"
                     Visibility="Hidden"
+                    HorizontalContentAlignment="Left"
                     Content="{Binding B3, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B3_Click"
                     ></Button>
@@ -977,6 +980,7 @@
                     Grid.Column="0"
                     Grid.Row="3"
                     Visibility="Hidden"
+                    HorizontalContentAlignment="Left"
                     Content="{Binding B4, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B4_Click"
                     ></Button>
@@ -985,6 +989,7 @@
                     Grid.Column="0"
                     Grid.Row="4"
                     Visibility="Hidden"
+                    HorizontalContentAlignment="Left"
                     Content="{Binding B5, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B5_Click"
                     ></Button>
@@ -993,6 +998,7 @@
                     Grid.Column="1"
                     Grid.Row="0"
                     Visibility="Hidden"
+                    HorizontalContentAlignment="Left"
                     Content="{Binding B6, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B6_Click"
                     ></Button>
@@ -1001,6 +1007,7 @@
                     Grid.Column="1"
                     Grid.Row="1"
                     Visibility="Hidden"
+                    HorizontalContentAlignment="Left"
                     Content="{Binding B7, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B7_Click"
                     ></Button>
@@ -1009,6 +1016,7 @@
                     Grid.Column="1"
                     Grid.Row="2"
                     Visibility="Hidden"
+                    HorizontalContentAlignment="Left"
                     Content="{Binding B8, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B8_Click"
                     ></Button>
@@ -1017,6 +1025,7 @@
                     Grid.Column="1"
                     Grid.Row="3"
                     Visibility="Hidden"
+                    HorizontalContentAlignment="Left"
                     Content="{Binding B9, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B9_Click"
                     ></Button>
@@ -1025,6 +1034,7 @@
                     Grid.Column="1"
                     Grid.Row="4"
                     Visibility="Hidden"
+                    HorizontalContentAlignment="Left"
                     Content="{Binding B10, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B10_Click"
                     >
