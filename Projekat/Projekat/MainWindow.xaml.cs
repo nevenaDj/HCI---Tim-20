@@ -30,9 +30,6 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
-
-
-            //Meni ovo ne radi !!!! - Nevena
             
             FileStream f = new FileStream("../../Save/save.txt", FileMode.OpenOrCreate);
             string fileContents;
@@ -48,8 +45,21 @@ namespace Projekat
             }
             else
             {
-                HeightW = 500;
-                WidthW = 800;
+                f = new FileStream("../../Save/defalut.txt", FileMode.OpenOrCreate);
+
+                using (StreamReader reader = new StreamReader(f))
+                {
+                    fileContents = reader.ReadToEnd();
+                }
+
+                if (fileContents != "")
+                {
+                    HeightW = 500;
+                    WidthW = 800;
+                    previewOpen(fileContents);
+                 
+                }
+
             }
             f.Close();
 
@@ -110,13 +120,60 @@ namespace Projekat
 
         }
 
+        private void previewOpen(string fileContents)
+        {
+            string[] s = fileContents.Split('\n');
+            
+
+            //  filename = s[0].Replace('\\','/');
+            filename = s[0];
+
+            RegexOptions options = RegexOptions.None;
+            Regex regex = new Regex("[\r\n]{3,}", options);
+            filename = regex.Replace(filename, "-*-");
+            filename = filename.Replace("\r\n", "");
+            filename = filename.Replace("\r", "");
+            filename = filename.Replace("-*-", "");
+
+            string text = File.ReadAllText(filename, Encoding.UTF8);
+
+            text = regex.Replace(text, "-*-");
+            text = text.Replace("\r\n", " ");
+            text = text.Replace("-*-", "\r\n\r\n");
+
+            int size = Convert.ToInt32(s[2]);   //radi                                          
+            Margins = Convert.ToInt32(s[6]);
+            Font = s[3];
+            //font
+            ColorB = s[5];
+            ColorF = s[4];
+
+            Page = Convert.ToInt32(s[1]);  //okej -> samo ne radi jump
+            Par.Inlines.Clear();
+            Par.Inlines.Add(text);
+            FontSizeD = size;
+            LineSpacing = Convert.ToInt32(s[8]);
+            FlowDocReader.Zoom = Convert.ToInt32(s[7]);   //radi
+            HeightW = Convert.ToInt32(s[9]);
+            WidthW = Convert.ToInt32(s[10]);
+            Margins = Convert.ToInt32(s[11]);
+            //komanda za sakrivanje menija
+            hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
+            CommandBinding cb = new CommandBinding(hideMenu);
+            cb.Executed += new ExecutedRoutedEventHandler(HideHandler);
+            this.CommandBindings.Add(cb);
+
+            PageNum = Convert.ToInt32(Page) + 1;
+
+        }
+
         private static RoutedCommand hideMenu = new RoutedCommand();
         string filename = "";
 
         private void OpenBook_Click(object sender, RoutedEventArgs e)
         {
 
-            FileStream f = new FileStream("../../Save/save.txt", FileMode.Create);
+          //  FileStream f = new FileStream("../../Save/save.txt", FileMode.Create);
 
             //otvori dijalog za izbor knjige
             OpenFileDialog openFileDialog = new OpenFileDialog();

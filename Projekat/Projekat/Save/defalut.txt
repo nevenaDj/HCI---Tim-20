@@ -1,0 +1,12 @@
+../../Save/A Study in Scarlet by Arthur Conan Doyle.txt
+571
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+300
