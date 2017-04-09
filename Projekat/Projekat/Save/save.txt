@@ -1,7 +1,7 @@
 E:\Faks\3Godina\HCI\HCI---Tim-20\Projekat\Projekat\books\Anna Karenina by Lev Tolstoj.txt
-1
+0
 12
-Verdana
+Verdana
 Azure
 #1d1d1d
 20

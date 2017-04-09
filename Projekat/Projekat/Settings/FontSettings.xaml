@@ -149,6 +149,8 @@
             Grid.Row="5"
             Grid.ColumnSpan="3"
             Margin="-20,0,-20,-63"
+            BorderBrush="#1d1d1d"
+            BorderThickness="1"
             IsToolBarVisible="False"
             ScrollViewer.HorizontalScrollBarVisibility="Hidden"
             ScrollViewer.VerticalScrollBarVisibility="Hidden">
@@ -159,6 +161,7 @@
                 FontSize="{Binding Path=FontSizeD, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 LineHeight="{Binding Path=LineSpacing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 PagePadding="{Binding Path=ChangeMargins, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+              
 
                 <Paragraph>
                     Ovo je primer.
