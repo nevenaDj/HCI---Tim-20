@@ -319,8 +319,9 @@ namespace Projekat
         private void CloseBook_Click(object sender, RoutedEventArgs e)
         {
             save_To_Recent_Files();
+            creating_Recent_Files();
             Book.Visibility = Visibility.Collapsed;
-            Not_Book.Visibility = Visibility.Hidden;
+            Not_Book.Visibility = Visibility.Visible;
             CloseBook.Visibility = Visibility.Hidden;
             MyMenu.Visibility = Visibility.Visible;
             Settings.Visibility = Visibility.Hidden;
@@ -338,53 +339,64 @@ namespace Projekat
 
         private void B1_Click(object sender, RoutedEventArgs e)
         {
-            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+            open(recentFiles[recentFiles.Length - 2]);
+            FlowDocReader.GoToPage(Convert.ToInt32(Page));
         }
 
         private void B2_Click(object sender, RoutedEventArgs e)
         {
-            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+            open(recentFiles[recentFiles.Length - 3]);
+            FlowDocReader.GoToPage(Convert.ToInt32(Page));
         }
 
         private void B3_Click(object sender, RoutedEventArgs e)
         {
-            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+            open(recentFiles[recentFiles.Length - 4]);
+            FlowDocReader.GoToPage(Convert.ToInt32(Page));
         }
 
         private void B4_Click(object sender, RoutedEventArgs e)
         {
-            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+            open(recentFiles[recentFiles.Length - 5]);
+            FlowDocReader.GoToPage(Convert.ToInt32(Page));
         }
 
         private void B5_Click(object sender, RoutedEventArgs e)
         {
-            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+            open(recentFiles[recentFiles.Length - 6]);
+            FlowDocReader.GoToPage(Convert.ToInt32(Page));
         }
 
         private void B6_Click(object sender, RoutedEventArgs e)
         {
-            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+            open(recentFiles[recentFiles.Length - 7]);
+            FlowDocReader.GoToPage(Convert.ToInt32(Page));
         }
 
         private void B7_Click(object sender, RoutedEventArgs e)
         {
-            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+            open(recentFiles[recentFiles.Length - 8]);
+            FlowDocReader.GoToPage(Convert.ToInt32(Page));
         }
 
         private void B8_Click(object sender, RoutedEventArgs e)
         {
-            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+            open(recentFiles[recentFiles.Length - 9]);
+            FlowDocReader.GoToPage(Convert.ToInt32(Page));
         }
         private void B9_Click(object sender, RoutedEventArgs e)
         {
-            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+            open(recentFiles[recentFiles.Length - 10]);
+            FlowDocReader.GoToPage(Convert.ToInt32(Page));
         }
 
         private void B10_Click(object sender, RoutedEventArgs e)
         {
-            FlowDocReader.GoToPage(Convert.ToInt32(PageNum));
+            open(recentFiles[recentFiles.Length - 11]);
+            FlowDocReader.GoToPage(Convert.ToInt32(Page));
         }
 
+        
        
 
         private void creating_Recent_Files()
@@ -402,71 +414,71 @@ namespace Projekat
                 {
                     button1.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size-2].Split('\n');
-                    double percentage = (Convert.ToDouble(data[1])+1) / Convert.ToDouble(data[12]) * 100;
-                    B1 = data[0] + "\n" + percentage + "%    - > Page: "+ data[1]+", Count: "+ data[12];
+                    int percentage = Convert.ToInt32((Convert.ToDouble(data[1])+1) / Convert.ToDouble(data[12]) * 100);
+                    B1 = data[0] + "\n" + percentage + " %\nPage: "+ (Convert.ToInt32(data[1]) + 1)+"/" + data[12];
                 }
                 if (recentFiles.Length > 2)
                 {
                     button2.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 3].Split('\n');
-                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
-                    B2 = data[0] + "\n" + percentage + "%";
+                    double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
+                    B2 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 3)
                 {
                     button3.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 4].Split('\n');
-                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
-                    B3 = data[0] + "\n" + percentage + "%";
+                    double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
+                    B3 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 4)
                 {
                     button4.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 5].Split('\n');
-                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
-                    B4 = data[0] + "\n" + percentage + "%";
+                    double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
+                    B4 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 5)
                 {
                     button5.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 6].Split('\n');
-                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
-                    B5 = data[0] + "\n" + percentage + "%";
+                    double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
+                    B5 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 6)
                 {
                     button6.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 7].Split('\n');
-                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
-                    B6 = data[0] + "\n" + percentage + "%";
+                    double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
+                    B6 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 7)
                 {
                     button7.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 8].Split('\n');
-                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
-                    B7 = data[0] + "\n" + percentage + "%";
+                    double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
+                    B7 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 8)
                 {
                     button8.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 9].Split('\n');
-                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
-                    B8 = data[0] + "\n" + percentage + "%";
+                    double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
+                    B8 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 9)
                 {
                     button9.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 10].Split('\n');
-                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
-                    B9 = data[0] + "\n" + percentage + "%";
+                    double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
+                    B9 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 10)
                 {
                     button10.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size-11].Split('\n');
-                    double percentage = Convert.ToInt32(data[1]) / Convert.ToInt32(data[11]) * 100;
-                    B10 = data[0] + "\n" + percentage + "%";
+                    double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
+                    B10 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
             }
             

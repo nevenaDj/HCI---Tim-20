@@ -75,17 +75,44 @@ LightYellow
 500
 800
 30
-385../../Save/A Study in Scarlet by Arthur Conan Doyle.txt
+385
+$C:\Users\Sabinomi\Downloads\Dracula by Bram Stoker.txt
 -1
 12
-Times New Roman
-DarkSlateGray
-LightYellow
+Times New Roman
+DarkSlateGray
+LightYellow
 20
 100
 20
 500
 800
-300
-147
+30
+514
+$C:\Users\Sabinomi\Downloads\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+-1
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+73
+$C:\Users\Sabinomi\Downloads\Dorothy and the Wizard in Oz by L. Frank Baum.txt
+-1
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+73
 $
