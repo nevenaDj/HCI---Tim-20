@@ -1,1 +1,27 @@
-﻿
+C:\Users\Sabinomi\Downloads\The Time Machine by H. G. Wells.txt
+17
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+20
+103
+$C:\Users\Sabinomi\Downloads\A Study in Scarlet by Arthur Conan Doyle.txt
+3
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+20
+100
+20
+500
+800
+30
+171
+$

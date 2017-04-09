@@ -89,7 +89,6 @@ namespace Projekat
             text = text.Replace("-*-", "\r\n\r\n");
 
             int size = Convert.ToInt32(s[2]);   //radi                                          
-            Margins = Convert.ToInt32( s[6]);
             Font = s[3];
             //font
             ColorB = s[5];
@@ -103,7 +102,7 @@ namespace Projekat
             FlowDocReader.Zoom = Convert.ToInt32(s[7]);   //radi
             HeightW = Convert.ToInt32(s[9]);
             WidthW = Convert.ToInt32(s[10]);
-            Margins = Convert.ToInt32(s[11]);
+            Margins = Convert.ToInt32(s[6]);
             highlight();
             //komanda za sakrivanje menija
             hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
@@ -175,8 +174,11 @@ namespace Projekat
 
         private void OpenBook_Click(object sender, RoutedEventArgs e)
         {
+            if (Book.Visibility != Visibility.Hidden)
+            {
+                save_To_Recent_Files();
+            }
 
-          //  FileStream f = new FileStream("../../Save/save.txt", FileMode.Create);
 
             //otvori dijalog za izbor knjige
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -236,6 +238,38 @@ namespace Projekat
         }
 
 
+        void save_To_Recent_Files()
+        {
+            StreamWriter f = new StreamWriter("../../Save/recentFiles.txt", true);
+            f.WriteLine(filename.Split('\n')[0]);
+            //page
+            f.WriteLine(FlowDocReader.MasterPageNumber - 1);
+            //font size
+            f.WriteLine(FontSizeD);
+            //font family
+            f.WriteLine(Font);
+            //font color
+            f.WriteLine(ColorF);
+            //background color
+            f.WriteLine(ColorB);
+            //padding
+            //   MessageBox.Show(""+ Doc.PagePadding);
+            // f.WriteLine(Margins);
+            f.WriteLine("20");
+            //zoom
+            f.WriteLine(FlowDocReader.Zoom);
+            //space between lines
+            f.WriteLine(LineSpacing);
+            //height
+            f.WriteLine(HeightW);
+            //width
+            f.WriteLine(WidthW); 
+            f.WriteLine(Margins);
+            f.WriteLine(FlowDocReader.PageCount);
+            f.Write("$");
+            f.Close();
+        }
+
         void Window_Closing(object sender, CancelEventArgs e)
         {
             if (Book.Visibility != Visibility.Hidden)
@@ -255,7 +289,7 @@ namespace Projekat
                 //padding
                 //   MessageBox.Show(""+ Doc.PagePadding);
                 // f.WriteLine(Margins);
-                f.WriteLine("20");
+                f.WriteLine(Margins);
                 //zoom
                 f.WriteLine(FlowDocReader.Zoom);
                 //space between lines
@@ -263,9 +297,8 @@ namespace Projekat
                 //height
                 f.WriteLine(HeightW);
                 //width
-                f.WriteLine(WidthW);
-                //fullscreen     
-                f.WriteLine(Margins);     
+                f.WriteLine(WidthW); 
+                    
 
                 f.Close();
             }
@@ -276,6 +309,7 @@ namespace Projekat
 
         private void CloseBook_Click(object sender, RoutedEventArgs e)
         {
+            save_To_Recent_Files();
             Book.Visibility = Visibility.Hidden;
             CloseBook.Visibility = Visibility.Hidden;
             MyMenu.Visibility = Visibility.Visible;
