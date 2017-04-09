@@ -883,7 +883,7 @@
                                                     KeyboardNavigation.IsTabStop="False"
                                                     KeyboardNavigation.TabIndex="1"
                                                     KeyboardNavigation.TabNavigation="None"
-                                                    PageNumber="{Binding Path=Page, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                    PageNumber="{Binding Path=Page, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                             </AdornerDecorator>
                                         </Border>
                                     </DockPanel>
