@@ -319,15 +319,15 @@ namespace Projekat
         private void NightMode_Click(object sender, RoutedEventArgs e)
         {
 
-            if(ColorB == "Black")
+            if(ColorB == "#1d1d1d")
             {
                 ColorB = "LightYellow";
                 ColorF = "DarkSlateGray";
             }
             else
             {
-                ColorB = "Black";
-                ColorF = "White";
+                ColorB = "#1d1d1d";
+                ColorF = "Azure";
             }
 
 
@@ -454,8 +454,8 @@ namespace Projekat
                 }
                 else if(value == "Night")
                 {
-                    ColorB = "Black";
-                    ColorF = "White";
+                    ColorB = "#1d1d1d";
+                    ColorF = "Azure";
                     _theme = value;
                     OnPropertyChanged("Theme");
                 }
