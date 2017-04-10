@@ -130,6 +130,7 @@ namespace Projekat
 
         }
 
+        
         private void previewOpen(string fileContents)
         {
             
@@ -322,7 +323,7 @@ namespace Projekat
             f.Write(text);
             f.WriteLine(filename.Split('\n')[0]);
             //page
-            f.WriteLine(FlowDocReader.MasterPageNumber - 1);
+            f.WriteLine(FlowDocReader.MasterPageNumber-1);
             //font size
             f.WriteLine(FontSizeD);
             //font family
@@ -364,7 +365,7 @@ namespace Projekat
                 StreamWriter f = new StreamWriter("../../Save/save.txt");
                 f.WriteLine(filename.Split('\n')[0]);
                 //page
-                f.WriteLine(FlowDocReader.MasterPageNumber - 1);
+                f.WriteLine(FlowDocReader.MasterPageNumber-1);
                 //font size
                 f.WriteLine(FontSizeD);
                 //font family
@@ -423,60 +424,81 @@ namespace Projekat
         private void B1_Click(object sender, RoutedEventArgs e)
         {
             open(recentFiles[recentFiles.Length - 2]);
-            FlowDocReader.GoToPage(Convert.ToInt32(Page));
+            int p = Page;
+            FlowDocReader.GoToPage(p);
+            FlowDocReader.NextPage();
         }
 
         private void B2_Click(object sender, RoutedEventArgs e)
         {
             open(recentFiles[recentFiles.Length - 3]);
-            FlowDocReader.GoToPage(Convert.ToInt32(Page));
+            FlowDocReader.GoToPage(Page);
+            FlowDocReader.NextPage();
+            this.DataContext = this;
         }
 
         private void B3_Click(object sender, RoutedEventArgs e)
         {
             open(recentFiles[recentFiles.Length - 4]);
-            FlowDocReader.GoToPage(Convert.ToInt32(Page));
+            FlowDocReader.GoToPage(Page);
+            FlowDocReader.NextPage();
+            this.DataContext = this;
         }
 
         private void B4_Click(object sender, RoutedEventArgs e)
         {
             open(recentFiles[recentFiles.Length - 5]);
             FlowDocReader.GoToPage(Convert.ToInt32(Page));
+            FlowDocReader.NextPage();
+            this.DataContext = this;
         }
 
         private void B5_Click(object sender, RoutedEventArgs e)
         {
             open(recentFiles[recentFiles.Length - 6]);
             FlowDocReader.GoToPage(Convert.ToInt32(Page));
+            FlowDocReader.NextPage();
+            this.DataContext = this;
         }
 
         private void B6_Click(object sender, RoutedEventArgs e)
         {
             open(recentFiles[recentFiles.Length - 7]);
             FlowDocReader.GoToPage(Convert.ToInt32(Page));
+            FlowDocReader.NextPage();
+            this.DataContext = this;
         }
 
         private void B7_Click(object sender, RoutedEventArgs e)
         {
             open(recentFiles[recentFiles.Length - 8]);
             FlowDocReader.GoToPage(Convert.ToInt32(Page));
+            FlowDocReader.NextPage();
+            this.DataContext = this;
         }
 
         private void B8_Click(object sender, RoutedEventArgs e)
         {
             open(recentFiles[recentFiles.Length - 9]);
             FlowDocReader.GoToPage(Convert.ToInt32(Page));
+            FlowDocReader.NextPage();
+            this.DataContext = this;
         }
         private void B9_Click(object sender, RoutedEventArgs e)
         {
+            Page = 0;
             open(recentFiles[recentFiles.Length - 10]);
-            FlowDocReader.GoToPage(Convert.ToInt32(Page ));
+            FlowDocReader.GoToPage(Convert.ToInt32(Page));
+            FlowDocReader.NextPage();
+            this.DataContext = this;
         }
 
         private void B10_Click(object sender, RoutedEventArgs e)
         {
             open(recentFiles[recentFiles.Length - 11]);
             FlowDocReader.GoToPage(Convert.ToInt32(Page ));
+            FlowDocReader.NextPage();
+            this.DataContext = this;
         }
 
         
@@ -498,7 +520,7 @@ namespace Projekat
                     button1.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size-2].Split('\n');
                     int percentage = Convert.ToInt32((Convert.ToDouble(data[1])+1) / Convert.ToDouble(data[12]) * 100);
-                    B1 = data[0] + "\n" + percentage + " %\nPage: "+ (Convert.ToInt32(data[1]) + 1)+"/" + data[12];
+                    B1 = data[0] + "\n" + percentage + " %\nPage: "+ (Convert.ToInt32(data[1]) + 1) +"/" + data[12];
                 }
                 if (recentFiles.Length > 2)
                 {
@@ -511,7 +533,7 @@ namespace Projekat
                 {
                     button3.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 4].Split('\n');
-                    double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
+                    double percentage = Convert.ToInt32((Convert.ToDouble(data[1])+1 ) / Convert.ToDouble(data[12]) * 100);
                     B3 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 4)
