@@ -580,71 +580,81 @@ namespace Projekat
                 {
                     button1.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size-2].Split('\n');
+                    string[] d = data[0].Split('\\');
                     int percentage = Convert.ToInt32((Convert.ToDouble(data[1])+1) / Convert.ToDouble(data[12]) * 100);
-                    B1 = data[0] + "\n" + percentage + " %\nPage: "+ (Convert.ToInt32(data[1]) + 1) +"/" + data[12];
+                    B1 = d[d.Length-1] + "\n" + percentage + " %\nPage: "+ (Convert.ToInt32(data[1]) + 1) +"/" + data[12];
                 }
                 if (recentFiles.Length > 2)
                 {
                     button2.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 3].Split('\n');
+                    string[] d = data[0].Split('\\');
                     double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
-                    B2 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
+                    B2 = d[d.Length - 1] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 3)
                 {
                     button3.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 4].Split('\n');
+                    string[] d = data[0].Split('\\');
                     double percentage = Convert.ToInt32((Convert.ToDouble(data[1])+1 ) / Convert.ToDouble(data[12]) * 100);
-                    B3 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
+                    B3 = d[d.Length - 1] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 4)
                 {
                     button4.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 5].Split('\n');
+                    string[] d = data[0].Split('\\');
                     double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
-                    B4 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
+                    B4 = d[d.Length - 1] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 5)
                 {
                     button5.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 6].Split('\n');
+                    string[] d = data[0].Split('\\');
                     double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
-                    B5 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
+                    B5 = d[d.Length - 1] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 6)
                 {
                     button6.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 7].Split('\n');
+                    string[] d = data[0].Split('\\');
                     double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
-                    B6 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
+                    B6 = d[d.Length - 1] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 7)
                 {
                     button7.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 8].Split('\n');
+                    string[] d = data[0].Split('\\');
                     double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
-                    B7 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
+                    B7 = d[d.Length - 1] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 8)
                 {
                     button8.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 9].Split('\n');
+                    string[] d = data[0].Split('\\');
                     double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
-                    B8 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
+                    B8 = d[d.Length - 1] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 9)
                 {
                     button9.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size - 10].Split('\n');
+                    string[] d = data[0].Split('\\');
                     double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
-                    B9 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
+                    B9 = d[d.Length - 1] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
                 if (recentFiles.Length > 10)
                 {
                     button10.Visibility = Visibility.Visible;
                     string[] data = recentFiles[size-11].Split('\n');
+                    string[] d = data[0].Split('\\');
                     double percentage = Convert.ToInt32((Convert.ToDouble(data[1]) + 1) / Convert.ToDouble(data[12]) * 100);
-                    B10 = data[0] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
+                    B10 = d[d.Length - 1] + "\n" + percentage + " %\nPage: " + (Convert.ToInt32(data[1]) + 1) + "/" + data[12];
                 }
             }
             

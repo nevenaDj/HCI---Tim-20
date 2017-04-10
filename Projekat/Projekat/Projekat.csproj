@@ -157,6 +157,11 @@
     <Resource Include="books\The Works of Edgar Allan Poe - Volume 1 by Edgar Allan Poe.txt" />
     <Resource Include="books\War and Peace by Lev Tolstoj.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Save\highlight.txt" />
+    <Resource Include="Save\recentFiles.txt" />
+    <Resource Include="Save\save.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
