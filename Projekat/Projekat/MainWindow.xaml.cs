@@ -200,9 +200,6 @@ namespace Projekat
 
             if (openFileDialog.ShowDialog() == true)
             {
-                //  Page = 0;
-                //prikazi knjigu
-                // Book.Visibility = Visibility.Visible;
                 filename = openFileDialog.FileName;
                 string text = File.ReadAllText(filename, Encoding.UTF8);
 
@@ -214,6 +211,11 @@ namespace Projekat
 
                 Par.Inlines.Clear();
                 Par.Inlines.Add(text);
+                PageNum = 1;
+                Page = 0;
+
+                FlowDocReader.GoToPage(FlowDocReader.PageCount);
+                FlowDocReader.GoToPage(1);
 
                 FileStream f = new FileStream("../../Save/recentFiles.txt", FileMode.OpenOrCreate);
                 f.Close();
@@ -283,8 +285,6 @@ namespace Projekat
                 NightMode.Visibility = Visibility.Visible;
                 Highlight.Visibility = Visibility.Visible;
                 Not_Book.Visibility = Visibility.Hidden;
-                //Page = 0;
-                //FlowDocReader.GoToPage(1);
             }
 
         }

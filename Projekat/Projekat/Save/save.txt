@@ -1,0 +1,12 @@
+C:\Users\Nevena Djeric\Documents\HCI---Tim-20\Projekat\Projekat\books\Irish Fairy Tales.txt
+0
+12
+Times New Roman
+DarkSlateGray
+LightYellow
+30
+100
+20
+500
+800
+1
