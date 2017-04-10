@@ -51,7 +51,7 @@
                 Click="Highlight_Click"
                 Header="_Highlight"
                 TextBlock.FontSize="16"
-                Visibility="Hidden" />
+                Visibility="Hidden" />    
             <MenuItem
                 x:Name="CloseBook"
                 HorizontalAlignment="Right"
@@ -934,100 +934,112 @@
             DockPanel.Dock="Bottom"
             Visibility="Visible">
             <Grid
-                Uid="Grid_23"
-                HorizontalAlignment="Stretch"
-                DockPanel.Dock="Bottom">
+                 Uid="Grid_23"
+                 HorizontalAlignment="Stretch"
+                 DockPanel.Dock="Bottom">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition  />
+                    <ColumnDefinition  />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition  />
+                    <RowDefinition  />
+                    <RowDefinition  />
+                    <RowDefinition  />
+                    <RowDefinition  />
                 </Grid.RowDefinitions>
                 <Button
                     x:Name="button1"
-                    Grid.Row="0"
                     Grid.Column="0"
+                    Grid.Row="0"
+                    Visibility="Hidden"
                     HorizontalContentAlignment="Left"
+                    Content="{Binding B1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B1_Click"
-                    Content="{Binding B1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                    Visibility="Visible" />
+                    ></Button>
                 <Button
                     x:Name="button2"
-                    Grid.Row="1"
                     Grid.Column="0"
+                    Grid.Row="1"
+                    Visibility="Hidden"
                     HorizontalContentAlignment="Left"
+                    Content="{Binding B2, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B2_Click"
-                    Content="{Binding B2, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                    Visibility="Hidden" />
+                    ></Button>
                 <Button
                     x:Name="button3"
-                    Grid.Row="2"
                     Grid.Column="0"
+                    Grid.Row="2"
+                    Visibility="Hidden"
                     HorizontalContentAlignment="Left"
+                    Content="{Binding B3, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B3_Click"
-                    Content="{Binding B3, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                    Visibility="Hidden" />
+                    ></Button>
                 <Button
                     x:Name="button4"
-                    Grid.Row="3"
                     Grid.Column="0"
+                    Grid.Row="3"
+                    Visibility="Hidden"
                     HorizontalContentAlignment="Left"
+                    Content="{Binding B4, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B4_Click"
-                    Content="{Binding B4, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                    Visibility="Hidden" />
+                    ></Button>
                 <Button
                     x:Name="button5"
-                    Grid.Row="4"
                     Grid.Column="0"
+                    Grid.Row="4"
+                    Visibility="Hidden"
                     HorizontalContentAlignment="Left"
+                    Content="{Binding B5, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B5_Click"
-                    Content="{Binding B5, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                    Visibility="Hidden" />
+                    ></Button>
                 <Button
                     x:Name="button6"
-                    Grid.Row="0"
                     Grid.Column="1"
+                    Grid.Row="0"
+                    Visibility="Hidden"
                     HorizontalContentAlignment="Left"
+                    Content="{Binding B6, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B6_Click"
-                    Content="{Binding B6, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                    Visibility="Hidden" />
+                    ></Button>
                 <Button
                     x:Name="button7"
-                    Grid.Row="1"
                     Grid.Column="1"
+                    Grid.Row="1"
+                    Visibility="Hidden"
                     HorizontalContentAlignment="Left"
+                    Content="{Binding B7, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B7_Click"
-                    Content="{Binding B7, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                    Visibility="Hidden" />
+                    ></Button>
                 <Button
                     x:Name="button8"
-                    Grid.Row="2"
                     Grid.Column="1"
+                    Grid.Row="2"
+                    Visibility="Hidden"
                     HorizontalContentAlignment="Left"
+                    Content="{Binding B8, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B8_Click"
-                    Content="{Binding B8, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                    Visibility="Hidden" />
+                    ></Button>
                 <Button
                     x:Name="button9"
-                    Grid.Row="3"
                     Grid.Column="1"
+                    Grid.Row="3"
+                    Visibility="Hidden"
                     HorizontalContentAlignment="Left"
+                    Content="{Binding B9, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B9_Click"
-                    Content="{Binding B9, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                    Visibility="Hidden" />
+                    ></Button>
                 <Button
                     x:Name="button10"
-                    Grid.Row="4"
                     Grid.Column="1"
+                    Grid.Row="4"
+                    Visibility="Hidden"
                     HorizontalContentAlignment="Left"
+                    Content="{Binding B10, Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                     Click="B10_Click"
-                    Content="{Binding B10, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                    Visibility="Hidden" />
+                    >
+                    
+                </Button>
 
             </Grid>
 
