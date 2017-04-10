@@ -130,6 +130,7 @@ namespace Projekat
 
         }
         int p = 0;
+        int count = 0;
         private void open2(string fileContents)
         {
             string[] s = fileContents.Split('\n');
@@ -160,7 +161,7 @@ namespace Projekat
             p = Convert.ToInt32(s[1]);  //okej -> samo ne radi jump
             Par.Inlines.Clear();
             Par.Inlines.Add(text);
-
+            Page = 0;
             FontSizeD = size;
             LineSpacing = Convert.ToInt32(s[8]);
             FlowDocReader.Zoom = Convert.ToInt32(s[7]);   //radi
@@ -485,81 +486,172 @@ namespace Projekat
         private void B1_Click(object sender, RoutedEventArgs e)
         {
             open2(recentFiles[recentFiles.Length - 2]);
-            Page = 0;
-            FlowDocReader.GoToPage(1);
-            Page = p; 
+            if (p == 0)
+            {
+                Page = 100;
+                FlowDocReader.GoToPage(100);
+                Page = 0;
+                
+            }
+            else
+            {
+                Page = 0;
+                FlowDocReader.GoToPage(1);
+                Page = p;
+            }
+            
         }
 
         private void B2_Click(object sender, RoutedEventArgs e)
         {
             open2(recentFiles[recentFiles.Length - 3]);
-            Page = 0;
-            FlowDocReader.GoToPage(1);
-            Page = p;
-           // this.DataContext = this;
+            if (p == 0)
+            {
+                Page = 100;
+                FlowDocReader.GoToPage(100);
+                Page = 0;
+            }
+            else
+            {
+                Page = 0;
+                FlowDocReader.GoToPage(1);
+                Page = p;
+            }
         }
 
         private void B3_Click(object sender, RoutedEventArgs e)
         {
             open2(recentFiles[recentFiles.Length - 4]);
-            Page = 0;
-            FlowDocReader.GoToPage(1);
-            Page = p;
+            if (p == 0)
+            {
+                Page = 100;
+                FlowDocReader.GoToPage(100);
+                Page = 0;
+            }
+            else
+            {
+                Page = 0;
+                FlowDocReader.GoToPage(1);
+                Page = p;
+            }
         }
 
         private void B4_Click(object sender, RoutedEventArgs e)
         {
             open2(recentFiles[recentFiles.Length - 5]);
-            Page = 0;
-            FlowDocReader.GoToPage(1);
-            Page = p;
+            if (p == 0)
+            {
+                Page = 100;
+                FlowDocReader.GoToPage(100);
+                Page = 0;
+            }
+            else
+            {
+                Page = 0;
+                FlowDocReader.GoToPage(1);
+                Page = p;
+            }
         }
 
         private void B5_Click(object sender, RoutedEventArgs e)
         {
             open2(recentFiles[recentFiles.Length - 6]);
-            Page = 0;
-            FlowDocReader.GoToPage(1);
-            Page = p;
+            if (p == 0)
+            {
+                Page = 100;
+                FlowDocReader.GoToPage(100);
+                Page = 0;
+            }
+            else
+            {
+                Page = 0;
+                FlowDocReader.GoToPage(1);
+                Page = p;
+            }
         }
 
         private void B6_Click(object sender, RoutedEventArgs e)
         {
             open2(recentFiles[recentFiles.Length - 7]);
-            Page = 0;
-            FlowDocReader.GoToPage(1);
-            Page = p;
+            if (p == 0)
+            {
+                Page = 100;
+                FlowDocReader.GoToPage(100);
+                Page = 0;
+            }
+            else
+            {
+                Page = 0;
+                FlowDocReader.GoToPage(1);
+                Page = p;
+            }
         }
 
         private void B7_Click(object sender, RoutedEventArgs e)
         {
             open2(recentFiles[recentFiles.Length - 8]);
-            Page = 0;
-            FlowDocReader.GoToPage(1);
-            Page = p; ;
+            if (p == 0)
+            {
+                Page = 100;
+                FlowDocReader.GoToPage(100);
+                Page = 0;
+            }
+            else
+            {
+                Page = 0;
+                FlowDocReader.GoToPage(1);
+                Page = p;
+            };
         }
 
         private void B8_Click(object sender, RoutedEventArgs e)
         {
             open2(recentFiles[recentFiles.Length - 9]);
-            Page = 0;
-            FlowDocReader.GoToPage(1);
-            Page = p;
+            if (p == 0)
+            {
+                Page = 100;
+                FlowDocReader.GoToPage(100);
+                Page = 0;
+            }
+            else
+            {
+                Page = 0;
+                FlowDocReader.GoToPage(1);
+                Page = p;
+            }
         }
         private void B9_Click(object sender, RoutedEventArgs e)
         {
             open2(recentFiles[recentFiles.Length - 10]);
-            Page = 0;
-            FlowDocReader.GoToPage(1);
-            Page = p;
+            if (p == 0)
+            {
+                Page = 100;
+                FlowDocReader.GoToPage(100);
+                Page = 0;
+            }
+            else
+            {
+                Page = 0;
+                FlowDocReader.GoToPage(1);
+                Page = p;
+            }
         }
 
         private void B10_Click(object sender, RoutedEventArgs e)
         {
             open2(recentFiles[recentFiles.Length - 11]);
-            Page = 0;
-            FlowDocReader.GoToPage(1);
-            Page = p;
+            if (p == 0)
+            {
+                Page = 100;
+                FlowDocReader.GoToPage(100);
+                Page = 0;
+            }
+            else
+            {
+                Page = 0;
+                FlowDocReader.GoToPage(1);
+                Page = p;
+            }
         }
 
         
