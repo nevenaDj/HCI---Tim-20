@@ -221,15 +221,17 @@ namespace Projekat
                 f.Close();
 
                 string recentText = File.ReadAllText("../../Save/recentFiles.txt");
+                recentText = regex.Replace(recentText, "-*-");
+                recentText = recentText.Replace("\r\n", "\n");
+                recentText = recentText.Replace("-*-", "\r\n\r\n");
 
-               
                 recentFiles = recentText.Split('$');
 
                 int x = 0;
                 foreach (string book in recentFiles)
                 {
                     string[] data = book.Split('\n');
-                    if (data[0]==filename)
+                    if (data[0] == filename)
                     {
                         x++;
                         int size = Convert.ToInt32(data[2]);   //radi                                          
@@ -239,7 +241,7 @@ namespace Projekat
                         ColorF = data[4];
 
                         Page = Convert.ToInt32(data[1]);  //okej -> samo ne radi jump
-              
+
 
                         FontSizeD = size;
                         LineSpacing = Convert.ToInt32(data[8]);
@@ -254,9 +256,9 @@ namespace Projekat
                         //FlowDocReader.GoToPage(Convert.ToInt32(Page));
                     }
                 }
-                    
-                if (x==0)
-                { 
+
+                if (x == 0)
+                {
                     PageNum = 1;
                     FlowDocReader.GoToPage(1);
 
@@ -292,7 +294,31 @@ namespace Projekat
 
         void save_To_Recent_Files()
         {
-            StreamWriter f = new StreamWriter("../../Save/recentFiles.txt", true);
+            FileStream f1 = new FileStream("../../Save/recentFiles.txt", FileMode.OpenOrCreate);
+            f1.Close();
+
+            RegexOptions options = RegexOptions.None;
+            Regex regex = new Regex("[\r\n]{3,}", options);
+            string recentText = File.ReadAllText("../../Save/recentFiles.txt");
+            /*recentText = regex.Replace(recentText, "-*-");
+            recentText = recentText.Replace("\r\n", "\n");
+            recentText = recentText.Replace("-*-", "\r\n\r\n");*/
+
+            recentFiles = recentText.Split('$');
+            string text = "";
+            foreach (string book in recentFiles)
+            {
+                string[] data = book.Split('\n');
+                if (data[0].Split('\r')[0] != filename && data[0]!="")
+                {
+                    text += book + "\n$";
+                   // MessageBox.Show(book);
+                }
+            }
+
+
+            StreamWriter f = new StreamWriter("../../Save/recentFiles.txt");
+            f.Write(text);
             f.WriteLine(filename.Split('\n')[0]);
             //page
             f.WriteLine(FlowDocReader.MasterPageNumber - 1);
@@ -307,7 +333,7 @@ namespace Projekat
             //padding
             //   MessageBox.Show(""+ Doc.PagePadding);
             // f.WriteLine(Margins);
-            f.WriteLine("20");
+            f.WriteLine(Margins);
             //zoom
             f.WriteLine(FlowDocReader.Zoom);
             //space between lines
@@ -315,8 +341,16 @@ namespace Projekat
             //height
             f.WriteLine(HeightW);
             //width
-            f.WriteLine(WidthW); 
-            f.WriteLine(Margins);
+            f.WriteLine(WidthW);
+
+            if (WindowState == WindowState.Maximized)
+            {
+                f.WriteLine(0);
+            }
+            else
+            {
+                f.WriteLine(1);
+            }
             f.WriteLine(FlowDocReader.PageCount);
             f.Write("$");
             f.Close();
@@ -358,12 +392,9 @@ namespace Projekat
                 {
                     f.WriteLine(1);
                 }
-                    
 
                 f.Close();
             }
-
-
 
         }
 
