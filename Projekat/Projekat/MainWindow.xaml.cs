@@ -223,7 +223,8 @@ namespace Projekat
                 string recentText = File.ReadAllText("../../Save/recentFiles.txt");
                 recentText = regex.Replace(recentText, "-*-");
                 recentText = recentText.Replace("\r\n", "\n");
-                recentText = recentText.Replace("-*-", "\r\n\r\n");
+                recentText = recentText.Replace("\r", "");
+                recentText = recentText.Replace("-*-", "\n");
 
                 recentFiles = recentText.Split('$');
 
@@ -469,13 +470,13 @@ namespace Projekat
         private void B9_Click(object sender, RoutedEventArgs e)
         {
             open(recentFiles[recentFiles.Length - 10]);
-            FlowDocReader.GoToPage(Convert.ToInt32(Page));
+            FlowDocReader.GoToPage(Convert.ToInt32(Page ));
         }
 
         private void B10_Click(object sender, RoutedEventArgs e)
         {
             open(recentFiles[recentFiles.Length - 11]);
-            FlowDocReader.GoToPage(Convert.ToInt32(Page));
+            FlowDocReader.GoToPage(Convert.ToInt32(Page ));
         }
 
         
