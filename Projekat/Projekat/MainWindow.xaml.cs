@@ -129,8 +129,69 @@ namespace Projekat
 
 
         }
+        int p = 0;
+        private void open2(string fileContents)
+        {
+            string[] s = fileContents.Split('\n');
 
-        
+
+            //  filename = s[0].Replace('\\','/');
+            filename = s[0];
+
+            RegexOptions options = RegexOptions.None;
+            Regex regex = new Regex("[\r\n]{3,}", options);
+            filename = regex.Replace(filename, "-*-");
+            filename = filename.Replace("\r\n", "");
+            filename = filename.Replace("\r", "");
+            filename = filename.Replace("-*-", "");
+
+            string text = File.ReadAllText(filename, Encoding.UTF8);
+
+            text = regex.Replace(text, "-*-");
+            text = text.Replace("\r\n", " ");
+            text = text.Replace("-*-", "\r\n\r\n");
+
+            int size = Convert.ToInt32(s[2]);   //radi                                          
+            Font = s[3];
+            //font
+            ColorB = s[5];
+            ColorF = s[4];
+
+            p = Convert.ToInt32(s[1]);  //okej -> samo ne radi jump
+            Par.Inlines.Clear();
+            Par.Inlines.Add(text);
+
+            FontSizeD = size;
+            LineSpacing = Convert.ToInt32(s[8]);
+            FlowDocReader.Zoom = Convert.ToInt32(s[7]);   //radi
+            HeightW = Convert.ToInt32(s[9]);
+            WidthW = Convert.ToInt32(s[10]);
+            if (Convert.ToInt32(s[11]) == 0)
+            {
+                WindowState = WindowState.Maximized;
+            }
+            Margins = Convert.ToInt32(s[6]);
+            highlight();
+            //komanda za sakrivanje menija
+            hideMenu.InputGestures.Add(new KeyGesture(Key.Escape));
+            CommandBinding cb = new CommandBinding(hideMenu);
+            cb.Executed += new ExecutedRoutedEventHandler(HideHandler);
+            this.CommandBindings.Add(cb);
+
+            PageNum = Convert.ToInt32(p) + 1;
+
+            Book.Visibility = Visibility.Visible;
+            CloseBook.Visibility = Visibility.Visible;
+            MyMenu.Visibility = Visibility.Hidden;
+            Settings.Visibility = Visibility.Visible;
+            NightMode.Visibility = Visibility.Visible;
+            Highlight.Visibility = Visibility.Visible;
+            Not_Book.Visibility = Visibility.Hidden;
+
+
+        }
+
+
         private void previewOpen(string fileContents)
         {
             
@@ -423,82 +484,82 @@ namespace Projekat
 
         private void B1_Click(object sender, RoutedEventArgs e)
         {
-            open(recentFiles[recentFiles.Length - 2]);
-            int p = Page;
-            FlowDocReader.GoToPage(p);
-            FlowDocReader.NextPage();
+            open2(recentFiles[recentFiles.Length - 2]);
+            Page = 0;
+            FlowDocReader.GoToPage(1);
+            Page = p; 
         }
 
         private void B2_Click(object sender, RoutedEventArgs e)
         {
-            open(recentFiles[recentFiles.Length - 3]);
-            FlowDocReader.GoToPage(Page);
-            FlowDocReader.NextPage();
-            this.DataContext = this;
+            open2(recentFiles[recentFiles.Length - 3]);
+            Page = 0;
+            FlowDocReader.GoToPage(1);
+            Page = p;
+           // this.DataContext = this;
         }
 
         private void B3_Click(object sender, RoutedEventArgs e)
         {
-            open(recentFiles[recentFiles.Length - 4]);
-            FlowDocReader.GoToPage(Page);
-            FlowDocReader.NextPage();
-            this.DataContext = this;
+            open2(recentFiles[recentFiles.Length - 4]);
+            Page = 0;
+            FlowDocReader.GoToPage(1);
+            Page = p;
         }
 
         private void B4_Click(object sender, RoutedEventArgs e)
         {
-            open(recentFiles[recentFiles.Length - 5]);
-            FlowDocReader.GoToPage(Convert.ToInt32(Page));
-            FlowDocReader.NextPage();
-            this.DataContext = this;
+            open2(recentFiles[recentFiles.Length - 5]);
+            Page = 0;
+            FlowDocReader.GoToPage(1);
+            Page = p;
         }
 
         private void B5_Click(object sender, RoutedEventArgs e)
         {
-            open(recentFiles[recentFiles.Length - 6]);
-            FlowDocReader.GoToPage(Convert.ToInt32(Page));
-            FlowDocReader.NextPage();
-            this.DataContext = this;
+            open2(recentFiles[recentFiles.Length - 6]);
+            Page = 0;
+            FlowDocReader.GoToPage(1);
+            Page = p;
         }
 
         private void B6_Click(object sender, RoutedEventArgs e)
         {
-            open(recentFiles[recentFiles.Length - 7]);
-            FlowDocReader.GoToPage(Convert.ToInt32(Page));
-            FlowDocReader.NextPage();
-            this.DataContext = this;
+            open2(recentFiles[recentFiles.Length - 7]);
+            Page = 0;
+            FlowDocReader.GoToPage(1);
+            Page = p;
         }
 
         private void B7_Click(object sender, RoutedEventArgs e)
         {
-            open(recentFiles[recentFiles.Length - 8]);
-            FlowDocReader.GoToPage(Convert.ToInt32(Page));
-            FlowDocReader.NextPage();
-            this.DataContext = this;
+            open2(recentFiles[recentFiles.Length - 8]);
+            Page = 0;
+            FlowDocReader.GoToPage(1);
+            Page = p; ;
         }
 
         private void B8_Click(object sender, RoutedEventArgs e)
         {
-            open(recentFiles[recentFiles.Length - 9]);
-            FlowDocReader.GoToPage(Convert.ToInt32(Page));
-            FlowDocReader.NextPage();
-            this.DataContext = this;
+            open2(recentFiles[recentFiles.Length - 9]);
+            Page = 0;
+            FlowDocReader.GoToPage(1);
+            Page = p;
         }
         private void B9_Click(object sender, RoutedEventArgs e)
         {
+            open2(recentFiles[recentFiles.Length - 10]);
             Page = 0;
-            open(recentFiles[recentFiles.Length - 10]);
-            FlowDocReader.GoToPage(Convert.ToInt32(Page));
-            FlowDocReader.NextPage();
-            this.DataContext = this;
+            FlowDocReader.GoToPage(1);
+            Page = p;
         }
 
         private void B10_Click(object sender, RoutedEventArgs e)
         {
-            open(recentFiles[recentFiles.Length - 11]);
-            FlowDocReader.GoToPage(Convert.ToInt32(Page ));
-            FlowDocReader.NextPage();
-            this.DataContext = this;
+            open2(recentFiles[recentFiles.Length - 11]);
+            Page = 0;
+            FlowDocReader.GoToPage(1);
+            Page = p;
         }
 
         

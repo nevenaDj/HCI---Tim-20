@@ -1,80 +1,0 @@
-C:\Users\Sabinomi\Downloads\A Study in Scarlet by Arthur Conan Doyle.txt
-14
-12
-Times New Roman
-Black
-White
-131
-100
-20
-500
-800
-1
-213
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$C:\Users\Sabinomi\Downloads\The Time Machine by H. G. Wells.txt
-20
-12
-Times New Roman
-DarkSlateGray
-LightYellow
-30
-100
-20
-500
-800
-1
-105
-
-$C:\Users\Sabinomi\Downloads\Dorothy and the Wizard in Oz by L. Frank Baum.txt
-6
-12
-Times New Roman
-DarkSlateGray
-LightYellow
-30
-100
-20
-500
-800
-1
-204
-$
